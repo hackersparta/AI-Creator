@@ -4,628 +4,498 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI War Room — Master 25+ AI Tools in One Weekend</title>
-<meta name="description" content="Join the AI War Room: A 2-day hands-on AI workshop. Learn ChatGPT, 25+ AI tools, automation, and more. Only ₹99. Limited seats!">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#ffffff;--bg2:#f7faf7;--bg3:#eef5ee;
---green:#00a651;--green-dark:#008c44;--green-light:#e8f5e9;--green-pale:#f0faf0;
---text:#1a1a2e;--text-muted:#555;--text-dim:#888;
---warning:#f59e0b;--danger:#e53935;
---card:#ffffff;--border:#d4e8d4;--border-light:#e8f0e8;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{color:var(--green);text-decoration:none}
+body{font-family:'IBM Plex Sans',sans-serif;background:#fff;color:#000;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+.green{color:#4E9F3D}
+.green-grad{background:linear-gradient(117.64deg,#B3C28B -29.36%,#4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn-green{background:linear-gradient(128deg,#4e9f3d,#afc570);color:#fff;border:none;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-green:hover{opacity:.9}
 
-/* Utility */
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-.section{padding:80px 0}
-.section-title{font-size:2rem;font-weight:800;text-align:center;margin-bottom:16px;line-height:1.2}
-.section-subtitle{text-align:center;color:var(--text-muted);font-size:1.05rem;max-width:600px;margin:0 auto 48px}
-.highlight{color:var(--green)}
-.highlight2{color:var(--green-dark)}
-.badge{display:inline-block;background:var(--green-light);border:1px solid var(--green);color:var(--green-dark);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+/* ===== MARQUEE TOP BAR ===== */
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.top-bar{background:#E53935;padding:12px 0;overflow:hidden;white-space:nowrap}
+.top-bar-inner{display:inline-flex;animation:marquee 15s linear infinite}
+.top-bar span{font-size:1.1rem;font-weight:600;margin:0 8px}
+.top-bar .txt{color:#fff}
+.top-bar .disc{color:#FEF08A}
+.top-bar .star{color:#FEF08A}
 
-/* CTA Button */
-.cta-btn{
-display:inline-flex;align-items:center;justify-content:center;gap:8px;
-background:var(--green);
-color:#fff;font-size:1.1rem;font-weight:700;
-padding:16px 40px;border-radius:12px;border:none;cursor:pointer;
-transition:all 0.3s;text-decoration:none;
-box-shadow:0 4px 20px rgba(0,166,81,0.3);
-}
-.cta-btn:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,166,81,0.4)}
-.cta-btn-sm{padding:12px 28px;font-size:1rem}
+/* ===== HERO ===== */
+.hero{text-align:center;padding:40px 16px 30px;position:relative}
+.hero-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
+.hero-logo img{height:36px}
+.hero-logo .li-badge{display:flex;align-items:center;gap:6px;background:#0077B5;color:#fff;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:600}
+.hero-logo .li-badge svg{width:16px;height:16px;fill:#fff}
+.hero h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:600;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;-webkit-text-stroke:.5px black}
+.hero-sub{font-size:1.05rem;max-width:600px;margin:0 auto 24px;line-height:1.6}
 
-/* ========== HERO ========== */
-.hero{
-padding:100px 0 80px;
-background:linear-gradient(180deg,var(--green-pale) 0%,#fff 100%);
-text-align:center;position:relative;
-}
-.hero-badge{margin-bottom:24px}
-.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto;color:var(--text)}
-.hero-sub{font-size:1.15rem;color:var(--text-muted);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+/* Date pills */
+.date-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.d-pill{display:flex;align-items:center;gap:8px;background:#000;color:#fff;padding:6px 14px;border-radius:4px;font-size:.95rem}
+.d-pill svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
 
-/* Date/Time pills */
-.date-pills{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.date-pill{
-background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px 24px;min-width:200px;
-box-shadow:0 2px 8px rgba(0,0,0,0.04);
-}
-.date-pill .day{font-size:0.8rem;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.date-pill .date{font-weight:700;font-size:1rem;color:var(--text)}
-.date-pill .time{color:var(--text-muted);font-size:0.85rem;margin-top:2px}
+/* Video thumbnail */
+.hero-video{position:relative;max-width:550px;margin:24px auto;border-radius:10px;overflow:hidden}
+.hero-video img{width:100%;display:block}
+.hero-video .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2)}
+.hero-video .play-overlay svg{width:40px;height:40px;fill:#fff}
 
-/* Price */
-.price-block{margin:32px 0}
-.price-old{font-size:1.3rem;color:var(--text-dim);text-decoration:line-through;margin-right:8px}
-.price-new{font-size:2.5rem;font-weight:900;color:var(--green)}
-.price-off{display:inline-block;background:var(--danger);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.8rem;font-weight:700;margin-left:12px;vertical-align:middle}
+/* CTA */
+.hero-cta{margin-top:20px}
+.hero-cta button,.hero-cta a{display:inline-block;font-size:1.2rem;font-weight:600;padding:16px 32px;border-radius:50px;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)}
 
-/* Countdown */
-.countdown{display:flex;gap:12px;justify-content:center;margin:24px 0 8px}
-.countdown-item{background:#fff;border:2px solid var(--border);border-radius:10px;padding:12px 16px;min-width:70px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.countdown-item .num{font-size:1.8rem;font-weight:800;color:var(--green);display:block}
-.countdown-item .label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
-.countdown-text{color:var(--text-muted);font-size:0.85rem;margin-bottom:16px}
+/* ===== RATED ===== */
+.rated-section{display:flex;justify-content:center;padding:24px 16px 0}
+.rated-card{display:flex;flex-direction:column;align-items:center;gap:20px;background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)}
+.rated-card h2{font-size:1.2rem;font-weight:400}
+.rated-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.rb{display:flex;align-items:center;gap:8px;background:#DBEEBA;border:1px solid #A6A6A6;border-radius:8px;padding:8px 12px;min-width:150px}
+.rb img{width:28px;height:28px;object-fit:contain;border-radius:4px}
+.rb .rb-score{font-weight:700;font-size:.95rem}
+.rb .rb-source{font-size:.85rem;color:#555}
 
-/* ========== RATED SECTION (GrowthSchool style) ========== */
-.rated-section{margin-top:48px}
-.rated-card{
-display:inline-block;background:#fff;border:2px solid var(--green);border-radius:16px;
-padding:28px 40px;box-shadow:0 4px 20px rgba(0,166,81,0.1);
-}
-.rated-title{font-size:1.1rem;color:var(--text-muted);margin-bottom:20px;text-align:center;font-weight:500}
-.rated-badges{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.rated-badge{
-background:var(--green-light);border:1px solid var(--border);border-radius:10px;
-padding:12px 20px;display:flex;align-items:center;gap:10px;min-width:180px;
-}
-.rated-badge .rb-icon{width:28px;height:28px;flex-shrink:0}
-/* Trustpilot star icon */
-.tp-star{width:28px;height:28px;background:var(--green);display:flex;align-items:center;justify-content:center;border-radius:4px}
-.tp-star svg{width:16px;height:16px;fill:#fff}
-/* Google G icon */
-.g-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
-.g-icon svg{width:24px;height:24px}
-.rated-badge .rb-info .rb-score{font-weight:800;font-size:0.95rem;color:var(--text)}
-.rated-badge .rb-info .rb-source{font-size:0.78rem;color:var(--green);font-weight:500}
+/* ===== LEARNER MARQUEE ===== */
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scrollRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.learner-section{padding:48px 16px;text-align:center}
+.learner-section h2{font-size:clamp(1.4rem,4vw,1.8rem);font-weight:600;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto}
+.marquee-wrap{overflow:hidden;width:100%;margin-bottom:16px}
+.marquee-track{display:flex;width:max-content}
+.marquee-track.left{animation:scrollLeft 30s linear infinite}
+.marquee-track.right{animation:scrollRight 30s linear infinite}
+.marquee-track img{width:120px;height:120px;object-fit:contain;margin:0 8px;flex-shrink:0}
 
-/* ========== LEARNINGS ========== */
-.learn-section{background:var(--bg2)}
-.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.learn-card{
-background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:24px;
-transition:all 0.3s;position:relative;overflow:hidden;
-box-shadow:0 2px 8px rgba(0,0,0,0.04);
-}
-.learn-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,166,81,0.1)}
-.learn-card .num{
-position:absolute;top:16px;right:20px;font-size:2.5rem;font-weight:900;
-color:rgba(0,166,81,0.08);line-height:1;
-}
-.learn-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;padding-right:40px;color:var(--text)}
-.learn-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.5}
-.learn-card .icon{font-size:1.5rem;margin-bottom:12px;display:block}
+/* ===== FEATURED IN ===== */
+.featured-section{display:flex;justify-content:center;padding:40px 16px}
+.featured-card{background:linear-gradient(128deg,#4e9f3d,#afc570);border-radius:12px;padding:32px;text-align:center;width:90%;max-width:700px}
+.featured-card h1{color:#fff;font-size:1.8rem;font-weight:700;margin-bottom:24px}
+.featured-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+.featured-logos img{height:28px;object-fit:contain}
 
-/* ========== BONUSES ========== */
-.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.bonus-card{
-background:var(--green-pale);
-border:1px solid var(--border);border-radius:14px;padding:28px;text-align:center;
-transition:all 0.3s;
-}
-.bonus-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,166,81,0.1)}
-.bonus-card .bonus-num{
-display:inline-flex;align-items:center;justify-content:center;
-width:40px;height:40px;border-radius:50%;
-background:var(--green);
-color:#fff;font-weight:800;font-size:1rem;margin-bottom:16px;
-}
-.bonus-card h3{font-size:0.95rem;font-weight:700;margin-bottom:8px;color:var(--text)}
-.bonus-card p{font-size:0.82rem;color:var(--text-muted)}
+/* ===== TOOLS GRID ===== */
+.tools-section{text-align:center;padding:40px 16px}
+.tools-section h1{font-size:1.8rem;font-weight:500;margin-bottom:32px}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;margin:0 auto}
+@media(min-width:768px){.tools-grid{grid-template-columns:repeat(6,1fr)}}
+.tool-item{display:flex;align-items:center;justify-content:center;border:1px solid #ddd;height:56px;background:#fff;border-radius:8px;padding:4px}
+.tool-item img{height:24px;width:auto}
+@media(min-width:768px){.tool-item img{height:36px}}
+.tool-item.blur{filter:blur(3px)}
 
-/* ========== MENTOR ========== */
-.mentor-section{background:var(--bg2)}
-.mentor-wrap{display:flex;align-items:center;gap:48px;flex-wrap:wrap;justify-content:center}
-.mentor-img{
-width:280px;height:280px;border-radius:50%;object-fit:cover;
-border:4px solid var(--green);
-box-shadow:0 0 30px rgba(0,166,81,0.15);
-}
-.mentor-info{flex:1;min-width:280px}
-.mentor-info h3{font-size:1.6rem;font-weight:800;margin-bottom:4px;color:var(--text)}
-.mentor-info .role{color:var(--green);font-weight:600;font-size:0.95rem;margin-bottom:16px}
-.mentor-info p{color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;line-height:1.7}
-.mentor-stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
-.mentor-stat{text-align:center}
-.mentor-stat .val{font-size:1.5rem;font-weight:800;color:var(--green);display:block}
-.mentor-stat .lbl{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+/* ===== CURRICULUM ===== */
+.curriculum-section{padding:48px 16px;text-align:center;position:relative}
+.curriculum-section h1{font-size:1.8rem;font-weight:500;margin-bottom:8px}
+.curriculum-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:900px;margin:24px auto 0;text-align:left}
+@media(min-width:768px){.curriculum-grid{grid-template-columns:repeat(3,1fr)}}
+.cur-card{background:linear-gradient(165deg,#95dd85,#d8e9a8);border-radius:8px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);cursor:pointer;min-height:70px}
+.cur-card .cur-icon{background:#fff;border-radius:12px;padding:4px;flex-shrink:0}
+.cur-card .cur-icon img{height:24px;width:auto}
+.cur-card p{font-size:1rem;font-weight:500;flex:1}
+.cur-card svg{width:20px;height:20px;flex-shrink:0}
+.cur-detail{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.cur-detail.open{max-height:500px}
+.cur-detail-inner{padding:16px;background:linear-gradient(180deg,#D8E9A8 3%,rgba(255,255,255,0) 100%)}
+.cur-detail-inner ul{padding-left:20px;list-style:disc}
+.cur-detail-inner li{margin-bottom:8px;font-size:.95rem;color:#333}
 
-/* ========== TESTIMONIALS ========== */
-.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.testimonial-card{
-background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:28px;
-transition:all 0.3s;box-shadow:0 2px 8px rgba(0,0,0,0.04);
-}
-.testimonial-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(0,166,81,0.08)}
-.testimonial-card .quote{font-size:0.92rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
-.testimonial-card .quote::before{content:'\201C';font-size:2rem;color:var(--green);line-height:0;vertical-align:-0.5em;margin-right:4px}
-.testimonial-author{display:flex;align-items:center;gap:12px}
-.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.9rem}
-.testimonial-name{font-weight:700;font-size:0.9rem;color:var(--text)}
-.testimonial-role{font-size:0.78rem;color:var(--text-muted)}
+/* ===== BONUSES ===== */
+.bonus-section{padding:40px 16px;text-align:center}
+.bonus-section h1{font-size:1.8rem;font-weight:700;margin-bottom:32px}
+.bonus-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:800px;margin:0 auto}
+@media(min-width:768px){.bonus-grid{grid-template-columns:repeat(2,1fr)}}
+.bonus-card{background:linear-gradient(149.11deg,#1E5128 -16.9%,#4E9F3D 129.3%);color:#fff;border-radius:8px;padding:24px 32px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;min-height:120px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.bonus-card .b-num{font-size:2.5rem;font-weight:700;flex-shrink:0}
+.bonus-card p{font-size:1rem;position:relative;z-index:1}
+.bonus-card .b-img{position:absolute;right:0;top:50%;transform:translateY(-50%);height:100%;width:auto;object-fit:contain;opacity:.5}
 
-/* ========== WHY US ========== */
-.why-section{background:var(--bg2)}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center}
-.why-card{background:#fff;border-radius:14px;padding:28px;border:1px solid var(--border-light);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.why-card .why-num{font-size:2.2rem;font-weight:900;color:var(--green);display:block;margin-bottom:4px}
-.why-card .why-label{color:var(--text-muted);font-size:0.9rem}
+/* ===== MENTORS ===== */
+.mentors-section{padding:48px 16px;text-align:center}
+.mentors-section h2{font-size:1.8rem;font-weight:500;margin-bottom:8px}
+.mentors-section .sub{color:#555;font-size:1rem;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto}
+.mentors-grid{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none}
+.mentors-grid::-webkit-scrollbar{display:none}
+.mentor-card{flex-shrink:0;width:240px;background:#fff;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;transition:box-shadow .3s}
+.mentor-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.mentor-card .m-img{width:100%;height:260px;object-fit:cover}
+.mentor-card .m-info{padding:16px}
+.mentor-card .m-info h3{font-size:1rem;font-weight:500;margin-bottom:4px}
+.mentor-card .m-info .m-role{font-size:.85rem;color:#555;margin-bottom:8px}
+.mentor-card .m-info .m-company{height:32px;object-fit:contain}
 
-/* ========== FAQ ========== */
-.faq-list{max-width:700px;margin:0 auto}
-.faq-item{border-bottom:1px solid var(--border-light);padding:20px 0}
-.faq-q{
-font-weight:700;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
-transition:color 0.2s;color:var(--text);
-}
-.faq-q:hover{color:var(--green)}
-.faq-q .arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--text-dim)}
-.faq-q.open .arrow{transform:rotate(180deg);color:var(--green)}
-.faq-a{
-max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;
-color:var(--text-muted);font-size:0.9rem;line-height:1.7;
-}
-.faq-a.open{max-height:500px;padding-top:12px}
+/* ===== TESTIMONIALS ===== */
+.testimonials-section{padding:48px 16px;text-align:center}
+.testimonials-section .label{font-size:.85rem;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:1px}
+.testimonials-section h2{font-size:1.8rem;font-weight:500;margin:8px 0 24px}
+.test-row{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none;margin-bottom:16px}
+.test-row::-webkit-scrollbar{display:none}
+.test-card{flex-shrink:0;width:270px;height:370px;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden}
+.test-card.video{position:relative;cursor:pointer}
+.test-card.video img{width:100%;height:100%;object-fit:cover}
+.test-card.video .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.test-card.video .v-name{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,.5);color:#fff;padding:4px 8px;border-radius:4px;font-weight:700;font-size:.85rem}
+.test-card.text{padding:20px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.test-card.text .li-icon{position:absolute;top:0;right:0;width:32px;height:32px;border-radius:0 8px 0 8px}
+.test-card.text p{color:#555;font-size:.9rem;line-height:1.6}
+.test-card.text .t-author{font-weight:700;color:#000;margin-top:12px}
 
-/* ========== FINAL CTA ========== */
-.final-cta{
-background:linear-gradient(135deg,var(--green-pale),var(--green-light));
-text-align:center;padding:80px 20px;
-}
-.final-cta h2{font-size:2rem;font-weight:900;margin-bottom:16px;color:var(--text)}
-.final-cta p{color:var(--text-muted);margin-bottom:32px;font-size:1.05rem}
+/* ===== WHY SECTION ===== */
+.why-section{padding:48px 16px;text-align:center}
+.why-section h1{font-size:1.8rem;font-weight:500;margin-bottom:16px}
+.why-section .why-desc{font-size:1.1rem;max-width:700px;margin:0 auto 32px;line-height:1.6}
+.why-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.why-stat{border:1px solid #000;border-radius:8px;width:160px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.why-stat svg{width:32px;height:32px}
+.why-stat h2{font-size:1.8rem;font-weight:600}
+.why-stat p{font-size:.85rem;font-weight:500;color:#555}
+.why-logo{display:flex;justify-content:center;margin-bottom:16px}
+.why-logo .logo-box{border:1px solid #000;border-radius:8px;padding:16px 24px}
+.why-logo .logo-box img{height:48px;width:auto;object-fit:contain}
+.why-backed{text-align:center;margin-bottom:24px;color:#555;font-size:1rem}
+.why-people{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.why-people .person{position:relative;width:112px;height:112px;border-radius:8px;overflow:hidden}
+.why-people .person img{width:100%;height:100%;object-fit:cover}
+.why-people .person .p-name{position:absolute;bottom:4px;left:0;right:0;text-align:center;color:#fff;font-size:.8rem;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 
-/* ========== STICKY BAR ========== */
-.sticky-bar{
-position:fixed;bottom:0;left:0;right:0;
-background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);
-border-top:2px solid var(--green);
-padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:16px;
-z-index:1000;transform:translateY(100%);transition:transform 0.3s;
-box-shadow:0 -4px 20px rgba(0,0,0,0.08);
-}
-.sticky-bar.visible{transform:translateY(0)}
-.sticky-bar .price-info{font-size:0.9rem;color:var(--text)}
-.sticky-bar .price-info .old{text-decoration:line-through;color:var(--text-dim);margin-right:6px}
-.sticky-bar .price-info .new{font-weight:800;color:var(--green);font-size:1.1rem}
+/* ===== PRICE CARD ===== */
+.price-section{padding:48px 16px;text-align:center;position:relative}
+.price-section h1{font-size:1.8rem;font-weight:700;margin-bottom:24px}
+.price-card{max-width:420px;margin:0 auto;background:#4e9f3d;border-radius:16px;padding:32px;color:#fff;position:relative;overflow:hidden}
+.price-card .p-bg{position:absolute;top:0;left:0;width:100%;height:200px;object-fit:cover;z-index:0}
+.price-card-inner{position:relative;z-index:1}
+.price-card h2{font-size:3rem;font-weight:500}
+.price-card .p-orig{font-size:1.2rem}
+.price-card .p-orig .strike{text-decoration:line-through}
+.price-card .p-desc{margin-top:20px;font-size:1.1rem}
+.price-card ul{margin-top:20px;list-style:none;padding:0}
+.price-card li{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:1rem;font-weight:500}
+.price-card li img{width:12px;margin-top:5px;flex-shrink:0}
+.price-card .p-cta{margin-top:24px}
+.price-card .p-cta a{display:block;background:#fff;color:#000;font-size:1.1rem;font-weight:500;padding:14px;border-radius:50px;text-align:center;transition:background .2s}
+.price-card .p-cta a:hover{background:#f0f0f0}
 
-/* ========== FOOTER ========== */
-.footer{text-align:center;padding:40px 20px;color:var(--text-dim);font-size:0.82rem;border-top:1px solid var(--border-light);background:var(--bg2)}
+/* ===== FAQ ===== */
+.faq-section{padding:48px 16px}
+.faq-wrap{max-width:800px;margin:0 auto;background:#f0f0f0;border-radius:24px;padding:32px 16px}
+@media(min-width:768px){.faq-wrap{padding:48px 48px}}
+.faq-wrap h1{text-align:center;font-size:1.8rem;font-weight:700;margin-bottom:32px}
+.faq-item{border:1px solid #000;border-radius:12px;padding:12px 16px;margin-bottom:12px;cursor:pointer}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:1rem;font-weight:500}
+.faq-q svg{width:20px;height:20px;flex-shrink:0;transition:transform .3s}
+.faq-q.open svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-a.open{max-height:500px}
+.faq-a p{padding-top:12px;color:#555;font-size:.95rem;line-height:1.6}
 
-/* ========== ANIMATIONS ========== */
-.fade-up{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+/* ===== CONVINCE ===== */
+.convince-section{max-width:800px;margin:-40px auto 0;background:#1e5128;border-radius:24px;padding:48px 32px 32px;text-align:center;color:#fff;position:relative;overflow:hidden;z-index:1}
+@media(min-width:768px){.convince-section{margin:-80px auto 0;padding:80px 48px 48px}}
+.convince-section h1{font-size:2rem;font-weight:700;margin-bottom:24px}
+.convince-section p{font-size:1rem;margin-bottom:24px;line-height:1.6}
+.convince-section a{display:inline-block;background:#fff;color:#000;font-size:1.1rem;font-weight:500;padding:14px 32px;border-radius:50px;transition:background .2s}
 
-/* ========== RESPONSIVE ========== */
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:32px 16px 100px}
+.footer img{height:48px;margin-bottom:12px}
+.footer a{display:block;color:#555;font-weight:500;margin-bottom:4px}
+.footer .addr{color:#555;font-weight:500;margin-top:24px;font-size:.9rem;line-height:1.6}
+
+/* ===== STICKY BAR ===== */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(216,233,168,.7);backdrop-filter:blur(8px);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;z-index:100;border-top:1px solid #ccc}
+.sticky-bar .s-price{font-size:1.5rem;font-weight:500}
+.sticky-bar .s-price .strike{text-decoration:line-through;font-size:1rem}
+.sticky-bar .s-price .off{font-size:.9rem}
+.sticky-bar .s-deadline{font-size:1rem}
+.sticky-bar a{font-size:1rem;font-weight:600;padding:10px 32px;border-radius:50px}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-.hero{padding:80px 0 60px}
-.hero h1{font-size:1.8rem}
-.section{padding:60px 0}
-.section-title{font-size:1.5rem}
-.date-pills{flex-direction:column;align-items:center}
-.mentor-wrap{flex-direction:column;text-align:center}
-.mentor-img{width:200px;height:200px}
-.mentor-stats{justify-content:center}
-.countdown-item{min-width:60px;padding:10px 12px}
-.countdown-item .num{font-size:1.4rem}
-.learn-grid,.bonus-grid,.testimonial-grid{grid-template-columns:1fr}
-.why-grid{grid-template-columns:repeat(2,1fr)}
-.rated-card{padding:20px 24px}
-.rated-badges{flex-direction:column;align-items:center}
+.why-stat{width:130px;height:130px}
+.convince-section{margin-left:16px;margin-right:16px}
 }
-
-/* Scrollbar */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:#f5f5f5}
-::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:#aaa}
 </style>
 </head>
 <body>
 
-<!-- ========== HERO ========== -->
-<section class="hero" id="top">
-<div class="container">
-<div class="hero-badge"><span class="badge">🔥 Limited Seats — Filling Fast!</span></div>
-<h1>Master <span class="highlight">25+ AI Tools</span> in One Weekend & Become <span class="highlight2">Irreplaceable</span></h1>
-<p class="hero-sub">This hands-on AI workshop transforms you into an AI power user — build automated workflows, create professional content in minutes, and launch AI-powered apps.</p>
-
-<div class="date-pills">
-<div class="date-pill">
-<div class="day">Saturday</div>
-<div class="date">22nd February 2026</div>
-<div class="time">10 AM — 7 PM IST</div>
-</div>
-<div class="date-pill">
-<div class="day">Sunday</div>
-<div class="date">23rd February 2026</div>
-<div class="time">10 AM — 7 PM IST</div>
+<!-- ===== TOP MARQUEE BAR ===== -->
+<div class="top-bar">
+<div class="top-bar-inner">
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
 </div>
 </div>
 
-<!-- RATED SECTION (GrowthSchool style) -->
-<div class="rated-section">
+<!-- ===== HERO ===== -->
+<section class="hero">
+<div class="hero-logo">
+<img src="https://course.growthschool.io/images/newgsblack.svg" alt="Logo">
+<div class="li-badge">
+<svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+<span>LinkedIn<br>Top Startup India</span>
+</div>
+</div>
+
+<h1>Learn <span class="green">25+ AI Tools</span> to Save Time, Money, and Supercharge Your Skills.</h1>
+<p class="hero-sub">This hands-on <span class="green" style="font-weight:600">AI workshop</span> transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
+
+<div class="date-row">
+<div class="d-pill"><svg viewBox="0 0 1024 1024"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"/></svg>22nd Feb Saturday</div>
+<div class="d-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 AM to 7 PM IST</div>
+</div>
+<div class="date-row">
+<div class="d-pill"><svg viewBox="0 0 1024 1024"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"/></svg>23rd Feb Sunday</div>
+<div class="d-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 AM to 7 PM IST</div>
+</div>
+
+<!-- Video Thumbnail -->
+<div class="hero-video">
+<img src="https://ws.growthschool.io/_next/image?url=%2Fimages%2Fgrowthschool%2Fvaibhavvsl.webp&w=1200&q=75" alt="Video Thumbnail">
+<div class="play-overlay"><svg viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/></svg></div>
+</div>
+
+<div class="hero-cta">
+<a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:16px 32px;font-size:1.2rem;font-weight:600;display:inline-block;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)">Join Now</a>
+</div>
+</section>
+
+<!-- ===== RATED ===== -->
+<section class="rated-section">
 <div class="rated-card">
-<div class="rated-title">Rated</div>
+<h2>Rated</h2>
 <div class="rated-badges">
-<div class="rated-badge">
-<div class="tp-star">
-<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-</div>
-<div class="rb-info">
+<div class="rb">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/star.webp" alt="Trustpilot">
+<div>
 <div class="rb-score">4.7/5 (5625)</div>
 <div class="rb-source">Trustpilot</div>
 </div>
 </div>
-<div class="rated-badge">
-<div class="g-icon">
-<svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
-</div>
-<div class="rb-info">
+<div class="rb">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/google.webp" alt="Google">
+<div>
 <div class="rb-score">4.4/5 (3704)</div>
 <div class="rb-source">Google Reviews</div>
 </div>
 </div>
 </div>
 </div>
-</div>
-
-<div class="price-block">
-<span class="price-old">₹1,999</span>
-<span class="price-new">₹99</span>
-<span class="price-off">95% OFF</span>
-</div>
-
-<p class="countdown-text">⏳ Offer ends in:</p>
-<div class="countdown" id="countdown">
-<div class="countdown-item"><span class="num" id="cd-days">00</span><span class="label">Days</span></div>
-<div class="countdown-item"><span class="num" id="cd-hours">00</span><span class="label">Hours</span></div>
-<div class="countdown-item"><span class="num" id="cd-mins">00</span><span class="label">Mins</span></div>
-<div class="countdown-item"><span class="num" id="cd-secs">00</span><span class="label">Secs</span></div>
-</div>
-
-<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn" id="hero-cta">⚡ Register Now — ₹99 Only</a>
-</div>
 </section>
 
-<!-- ========== WHAT YOU'LL LEARN ========== -->
-<section class="section learn-section" id="learn">
-<div class="container">
-<h2 class="section-title fade-up">Here's What You'll Learn in the <span class="highlight">2-Day AI Mastermind</span></h2>
-<p class="section-subtitle fade-up">From zero to AI power user — everything you need to 10x your productivity</p>
-
-<div class="learn-grid">
-<div class="learn-card fade-up">
-<span class="num">01</span>
-<span class="icon">🧠</span>
-<h3>Understanding Generative AI & Prompt Engineering</h3>
-<p>Master the art of communicating with AI. Learn prompt frameworks that get 10x better outputs every time.</p>
+<!-- ===== LEARNER MARQUEE ===== -->
+<section class="learner-section">
+<h2>Join who have successfully completed the program to become an AI-powered professional <span class="green-grad">2 Million+ Global Learners</span></h2>
+<div class="marquee-wrap">
+<div class="marquee-track left">
+<img src="https://ws.growthschool.io/images/growthschool/ma1.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma2.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma3.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma4.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma5.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma6.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma7.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma8.png" alt="">
+<img src="https://ws.growthschool.io/images/growthschool/ma1.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma2.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma3.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma4.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma5.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma6.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma7.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma8.png" alt="">
 </div>
-<div class="learn-card fade-up">
-<span class="num">02</span>
-<span class="icon">💬</span>
-<h3>ChatGPT and 20+ AI Tools</h3>
-<p>Deep dive into ChatGPT, Claude, Gemini, Perplexity and 20+ tools that will transform how you work.</p>
 </div>
-<div class="learn-card fade-up">
-<span class="num">03</span>
-<span class="icon">✍️</span>
-<h3>Create AI-Powered Writing Assistants</h3>
-<p>Build custom writing workflows that produce blog posts, emails, and copy in minutes — not hours.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">04</span>
-<span class="icon">⚙️</span>
-<h3>Automate Workflows with AI & No-Code</h3>
-<p>Connect AI tools with Zapier, Make, and no-code platforms to automate repetitive tasks forever.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">05</span>
-<span class="icon">🎨</span>
-<h3>Image & Video Generation with AI</h3>
-<p>Create stunning visuals with Midjourney, DALL-E, Runway — no design skills needed.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">06</span>
-<span class="icon">🚀</span>
-<h3>Build Digital Products Without Code</h3>
-<p>Launch websites, apps, and digital products using AI — even if you've never written a line of code.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">07</span>
-<span class="icon">📊</span>
-<h3>AI for Data Analysis & Decision-Making</h3>
-<p>Use AI to analyze data, create reports, and make smarter business decisions instantly.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">08</span>
-<span class="icon">🎬</span>
-<h3>Content Creation Using GenAI</h3>
-<p>Create social media content, YouTube scripts, newsletters, and presentations 10x faster.</p>
-</div>
-<div class="learn-card fade-up">
-<span class="num">09</span>
-<span class="icon">🔮</span>
-<h3>Emerging AI Trends & What's Next</h3>
-<p>Stay ahead of the curve. Learn about AI agents, multimodal AI, and the future of work.</p>
-</div>
+<div class="marquee-wrap">
+<div class="marquee-track right">
+<img src="https://ws.growthschool.io/images/growthschool/ma11.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma12.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma13.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma15.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma14.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma16.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma17.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma18.png" alt="">
+<img src="https://ws.growthschool.io/images/growthschool/ma11.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma12.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma13.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma15.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma14.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma16.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma17.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma18.png" alt="">
 </div>
 </div>
 </section>
 
-<!-- ========== BONUSES ========== -->
-<section class="section" id="bonuses">
-<div class="container">
-<h2 class="section-title fade-up">And Also Enjoy Bonuses Worth <span class="highlight">₹5,000</span> for FREE!</h2>
-<p class="section-subtitle fade-up">Because showing up should be rewarded</p>
+<!-- ===== FEATURED IN ===== -->
+<section class="featured-section">
+<div class="featured-card">
+<h1>Featured In</h1>
+<div class="featured-logos">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f1.webp" alt=""><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f2.webp" alt=""><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f3.webp" alt=""><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f4.webp" alt=""><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f5.webp" alt=""><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f6.webp" alt="">
+</div>
+</div>
+</section>
 
+<!-- ===== TOOLS ===== -->
+<section class="tools-section">
+<h1>Learn <span>25+ AI Tools</span></h1>
+<div class="tools-grid">
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t1.webp" alt=""></div>
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t2.webp" alt=""></div>
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t3.webp" alt=""></div>
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t4.webp" alt=""></div>
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t5.webp" alt=""></div>
+<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t6.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t7.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t8.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t9.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t10.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t11.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t12.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t13.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t14.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t15.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t16.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t17.webp" alt=""></div>
+<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t18.webp" alt=""></div>
+</div>
+</section>
+
+<!-- ===== CURRICULUM ===== -->
+<section class="curriculum-section">
+<h1>Here's What You'll Learn in the</h1>
+<h1>2-Day AI Mastermind</h1>
+<div class="curriculum-grid">
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw1.webp" alt=""></div><p>Understanding Generative AI &amp; Prompt Engineering</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Gain a deep, working knowledge of how generative AI models like ChatGPT, Claude, and Gemini function.</li><li>Learn the key principles of prompt engineering to get precise, high-quality outputs from any AI tool.</li><li>Understand how to effectively communicate with AI, whether for generating content, code, images, or strategy ideas.</li><li>Walk away with practical skills to leverage AI for a variety of tasks and business needs.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw2.webp" alt=""></div><p>ChatGPT and 20+ AI Tools</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Explore a curated set of 20+ powerful AI tools designed to save you hours of manual work.</li><li>From writing and research to brainstorming, task management, and design—this session will give you the ultimate productivity toolkit.</li><li>You'll not only discover which tools to use, but also learn how to integrate them into your daily workflow for maximum efficiency.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw3.webp" alt=""></div><p>Create AI-Powered Writing Assistants</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Build your own AI writing bot trained to sound just like you.</li><li>Use GPT-powered tools to fine-tune AI to replicate your unique tone and writing style.</li><li>Easily write blogs, social posts, emails, or scripts that feel personal and on-brand.</li><li>Learn the future of scalable, authentic content creation.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw4.webp" alt=""></div><p>Automate Workflows with AI and No-Code Platforms</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Learn to build AI-driven automations using no-code platforms like Make.com.</li><li>Automate tasks like posting content on LinkedIn, sending follow-up emails, and updating databases.</li><li>Make AI work in the background so you can focus on big-picture thinking.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw5.webp" alt=""></div><p>Explore Image and Video Generation with AI</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Dive into AI-generated media with tools like MidJourney and Runway ML.</li><li>Create studio-quality images, social media visuals, short videos, and cinematic content with prompts.</li><li>Perfect for marketers, creators, and entrepreneurs seeking to enhance visual storytelling.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw6.webp" alt=""></div><p>Build Digital Products without Code</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>No coding knowledge needed to build and launch products.</li><li>Use no-code platforms like Vibe Coding and AI tools to create apps, landing pages, automations, and digital products.</li><li>Gain the power to turn your ideas into working solutions without a developer.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw7.webp" alt=""></div><p>Use AI for Data Analysis and Decision-Making</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Learn how to clean, analyze, and make sense of raw data with AI.</li><li>Extract insights and create visual dashboards in minutes from sales data, survey results, and business metrics.</li><li>Use AI as your personal data analyst to make faster, smarter decisions.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw8.webp" alt=""></div><p>Content Creation Using GenAI</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Speed up content creation and improve quality with AI.</li><li>Generate scroll-stopping content for LinkedIn, Instagram, emails, and websites quickly.</li><li>Practice writing hooks, headlines, blogs, carousels, and scripts using AI, keeping the human touch intact.</li></ul></div></div></div>
+<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw9.webp" alt=""></div><p>Emerging AI Trends</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Stay ahead in the rapidly evolving AI world.</li><li>Discover the latest tools, innovations, and business applications you should watch.</li><li>Learn how top professionals use AI for growth, cost-saving, and gaining a competitive edge.</li></ul></div></div></div>
+</div>
+</section>
+
+<!-- ===== BONUSES ===== -->
+<section class="bonus-section">
+<h1>And Also Enjoy <span class="green-grad">Bonuses Worth ₹5000 for FREE!</span></h1>
 <div class="bonus-grid">
-<div class="bonus-card fade-up">
-<div class="bonus-num">1</div>
-<h3>Gold-Standard Prompts for GPT-4</h3>
-<p>Curated list of high-performance prompts that unlock ChatGPT's full potential. Copy, paste, profit.</p>
+<div class="bonus-card"><div class="b-num">1</div><p>List of Gold-Standard and Hidden Prompts for GPT4</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b1.webp" alt=""></div>
+<div class="bonus-card"><div class="b-num">2</div><p>Copy-Paste Template To Using All in one AI tools like Simplified.com</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b2.webp" alt=""></div>
+<div class="bonus-card"><div class="b-num">3</div><p>Step by Step Method of Coding a Website with 0 prior knowledge in tech</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b3.webp" alt=""></div>
+<div class="bonus-card"><div class="b-num">4</div><p>Creating AI generated personas that provide you support of 10 humans using Synthesia</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b4.webp" alt=""></div>
 </div>
-<div class="bonus-card fade-up">
-<div class="bonus-num">2</div>
-<h3>All-in-One AI Tools Templates</h3>
-<p>Ready-to-use templates for the top AI tools. Skip the learning curve, start producing immediately.</p>
+<div style="margin-top:32px"><a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:16px 32px;font-size:1.2rem;font-weight:600;display:inline-block;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)">Join Now</a></div>
+</section>
+
+<!-- ===== MENTORS ===== -->
+<section class="mentors-section">
+<h2>Learn from the top 1% in AI</h2>
+<p class="sub">...as They Guide You Through Cutting-Edge Tools—Transforming the Way You Work and Create</p>
+<div class="mentors-grid" style="justify-content:center">
+<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/raghu.jpg" alt="Raghuveer Nishthala"><div class="m-info"><h3>Raghuveer Nishthala</h3><p class="m-role">Brand Marketer</p><img class="m-company" src="https://course.outskill.com/images/ub.webp" alt=""></div></div>
+<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/shant.webp" alt="Shantanu Tungare"><div class="m-info"><h3>Shantanu Tungare</h3><p class="m-role">AI Film Maker - Bulb Chumka</p><img class="m-company" src="https://course.outskill.com/images/bulbm.png" alt="" style="filter:invert(1)"></div></div>
+<div class="mentor-card"><img class="m-img" src="https://course.growthschool.io/images/vnnn.webp" alt="Vaibhav Sisinty"><div class="m-info"><h3>Vaibhav Sisinty</h3><p class="m-role">Founder - GrowthSchool</p><img class="m-company" src="https://course.growthschool.io/images/aigs.png" alt=""></div></div>
+<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/dileep.webp" alt="KVS Dileep"><div class="m-info"><h3>KVS Dileep</h3><p class="m-role">Head of AI Initiatives</p><img class="m-company" src="https://course.growthschool.io/images/aigs.png" alt=""></div></div>
 </div>
-<div class="bonus-card fade-up">
-<div class="bonus-num">3</div>
-<h3>Build a Website with Zero Coding</h3>
-<p>Step-by-step method to code and deploy a professional website using only AI. No tech background needed.</p>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+<p class="label">HEAR IT FROM THEM</p>
+<h2>See what's possible here</h2>
+<div class="test-row" style="justify-content:center">
+<div class="test-card video"><img src="https://go.outskill.com/vm1.png" alt=""><div class="play-btn">▶</div><div class="v-name">Ankur Sarkar</div></div>
+<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>My day doesn't do without thanks to Growth School webinar attendance experience. I express desk gratitude to Mr V. and all experts who have presented the knowledge. I'm already bootstrapped and dived into refining my skills.</p><p class="t-author">Jayaasrinnivas Patri</p></div>
+<div class="test-card video"><img src="https://go.outskill.com/vm2.png" alt=""><div class="play-btn">▶</div><div class="v-name">Parvinder Singh Sarin</div></div>
+<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Thanks again everyone at GS Team and the whole community! You are such examples of commitment, joy, and dedication to help people believe that they can do what they couldn't do before!</p><p class="t-author">Simil Simon</p></div>
 </div>
-<div class="bonus-card fade-up">
-<div class="bonus-num">4</div>
-<h3>AI-Generated Personas with Synthesia</h3>
-<p>Create AI avatars that provide the support of 10 humans. Perfect for content, support, and presentations.</p>
+<div class="test-row" style="justify-content:center">
+<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Great great great session! Actually enjoyed jumping into the world of AI. It was actually an eye-opening session! It was really a BOOM! Hat's off to Vaibhav &amp; team!</p><p class="t-author">Parmeet Singh Khanuja</p></div>
+<div class="test-card video"><img src="https://go.outskill.com/vm3.png" alt=""><div class="play-btn">▶</div><div class="v-name">Harish Prakash</div></div>
+<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Massive thanks to Prashanth, Phani, Vaibhav, Manish, PK, and the entire Growth School team for absolutely over-delivering in today's Gen AI Bootcamp session! The insights and value were next-level!</p><p class="t-author">Nikhil Ratakonda</p></div>
+<div class="test-card video"><img src="https://go.outskill.com/vm4.png" alt=""><div class="play-btn">▶</div><div class="v-name">Krishnan Tyer</div></div>
 </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="why-section">
+<h1>Why AI War Room?</h1>
+<p class="why-desc">AI War Room is where you become the <span class="green-grad">Top 1%</span> in your field. We bring the best of Product, Growth, Design, Tech, data and business mentors from brands like <span class="green-grad">Google, Meta, Uber</span> etc doing the jobs you want to do tomorrow.</p>
+<div class="why-stats">
+<div class="why-stat">
+<svg viewBox="0 0 576 512"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6z"/></svg>
+<h2>4.7<span style="font-size:1.2rem">/5</span></h2>
+<p>Trustpilot Rating</p>
+</div>
+<div class="why-stat">
+<svg viewBox="0 0 448 512"><path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"/></svg>
+<h2>10.2M+</h2>
+<p>Global Learners</p>
+</div>
+</div>
+<div class="why-logo"><div class="logo-box"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/mainlogo.png" alt="Logos"></div></div>
+<p class="why-backed">Backed by the best</p>
+<div class="why-people">
+<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w3.webp" alt=""><div class="p-name">Austin Alred</div></div>
+<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w2.webp" alt=""><div class="p-name">Eric Siu</div></div>
+<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w1.webp" alt=""><div class="p-name">Justin Caldbeck</div></div>
+</div>
+</section>
+
+<!-- ===== PRICE CARD ===== -->
+<section class="price-section">
+<h1><span class="green-grad">AI</span> Workshop for Professionals</h1>
+<div class="price-card">
+<img class="p-bg" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/priceback.webp" alt="">
+<div class="price-card-inner">
+<h2>₹99</h2>
+<p class="p-orig"><span class="strike">₹1,999</span> (Save 95%)</p>
+<p class="p-desc">Register now and get our bestselling workshop at 100% that includes:</p>
+<ul>
+<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹2000 worth of course content on leveraging AI &amp; ChatGPT as a professional</li>
+<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹5000 in bonuses to help you become an AI-powered professional</li>
+<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹2300 access pass to a global community of professionals and AI-enthusiasts</li>
+</ul>
+<div class="p-cta"><a href="https://rzp.io/rzp/n4VXqelQ">Join Now</a></div>
 </div>
 </div>
 </section>
 
-<!-- ========== MENTOR ========== -->
-<section class="section mentor-section" id="mentor">
-<div class="container">
-<h2 class="section-title fade-up">Learn from the <span class="highlight">Best in AI</span></h2>
-<p class="section-subtitle fade-up">Your guide through the AI revolution</p>
-
-<div class="mentor-wrap fade-up">
-<img src="nirmal.jpg" alt="Nirmal Sistiny" class="mentor-img" loading="lazy">
-<div class="mentor-info">
-<h3>Nirmal Sistiny</h3>
-<p class="role">AI & Fintech Specialist | 10+ Years in Tech</p>
-<p>With over a decade of experience building cutting-edge fintech products and a deep expertise in AI, Nirmal has helped professionals and businesses harness the power of artificial intelligence to transform their workflows.</p>
-<p>He believes AI isn't just for engineers — it's for everyone who wants to stay relevant and thrive in the new economy. This workshop is his mission to democratize AI knowledge.</p>
-<div class="mentor-stats">
-<div class="mentor-stat"><span class="val">10+</span><span class="lbl">Years Experience</span></div>
-<div class="mentor-stat"><span class="val">25+</span><span class="lbl">AI Tools Covered</span></div>
-<div class="mentor-stat"><span class="val">500+</span><span class="lbl">Professionals Trained</span></div>
-</div>
-</div>
-</div>
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+<div class="faq-wrap">
+<h1>FAQ</h1>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What is this workshop about?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This is a 2-day intensive, hands-on workshop where you'll learn 25+ AI tools including ChatGPT, Claude, Midjourney, and more. You'll leave with practical skills to automate your work, create content faster, and build AI-powered products.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I expect hands-on training?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Yes, the workshop includes hands-on training with practical examples.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Will this be live or pre-recorded?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This is a LIVE interactive experience! You'll be learning in real-time with fellow participants, participating in polls, answering thought-provoking questions, attempting quizzes, and doing many more exciting activities. By the end of the value-packed session, you will have a roadmap to reach your desired outcomes 🚀</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">I have a full time job. Will you share recordings?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>The workshop is Live over the weekend, so your work will not be hampered. But the sessions will not be recorded.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Would there be any certificate on completion?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Yes! You will receive a certificate on completion if you attend the entire live session.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">When can I receive the bonus?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>You will receive all the bonuses within 48 hours once the workshop is done.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What is the timezone?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>It is IST (Indian Standard Time).</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Who should attend this workshop?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This workshop is designed for professionals of all levels and industries who want to harness the power of AI to enhance their professional skills and success.</p></div></div>
+<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Will I receive a certificate upon completion?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Absolutely! You'll get a virtual certificate signed by your mentor, verifying your completion of the course. It's a tangible way to showcase your newly acquired skills and expertise.</p></div></div>
 </div>
 </section>
 
-<!-- ========== TESTIMONIALS ========== -->
-<section class="section" id="testimonials">
-<div class="container">
-<h2 class="section-title fade-up">Hear It From <span class="highlight">Our Learners</span></h2>
-<p class="section-subtitle fade-up">Real results from real professionals</p>
-
-<div class="testimonial-grid">
-<div class="testimonial-card fade-up">
-<p class="quote">This workshop completely changed how I work. I'm saving 3-4 hours daily using the AI tools I learned here. The prompt engineering section alone was worth 100x the price.</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">P</div>
-<div><div class="testimonial-name">Priya S.</div><div class="testimonial-role">Marketing Manager, Bangalore</div></div>
-</div>
-</div>
-<div class="testimonial-card fade-up">
-<p class="quote">I went from knowing nothing about AI to automating half my tasks at work. My manager noticed the productivity boost within a week. Best ₹99 I've ever spent.</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">R</div>
-<div><div class="testimonial-name">Rahul M.</div><div class="testimonial-role">Software Engineer, Pune</div></div>
-</div>
-</div>
-<div class="testimonial-card fade-up">
-<p class="quote">As a freelancer, AI tools have 10x'd my output. I'm taking on more clients and delivering faster. Nirmal's teaching style makes complex tools feel effortless.</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">A</div>
-<div><div class="testimonial-name">Anita K.</div><div class="testimonial-role">Freelance Designer, Mumbai</div></div>
-</div>
-</div>
-<div class="testimonial-card fade-up">
-<p class="quote">I was skeptical about a ₹99 workshop but this delivered more value than courses I've paid ₹10,000+ for. The hands-on approach is what makes the difference.</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">V</div>
-<div><div class="testimonial-name">Vikram T.</div><div class="testimonial-role">Business Analyst, Delhi</div></div>
-</div>
-</div>
-<div class="testimonial-card fade-up">
-<p class="quote">Built my first AI-powered app during the workshop itself — with zero coding experience! The energy in the room was incredible. Highly recommend.</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">S</div>
-<div><div class="testimonial-name">Sneha R.</div><div class="testimonial-role">HR Professional, Chennai</div></div>
-</div>
-</div>
-<div class="testimonial-card fade-up">
-<p class="quote">Finally someone who teaches AI tools practically, not just theory. I've already automated my email responses and content calendar. Game changer!</p>
-<div class="testimonial-author">
-<div class="testimonial-avatar">D</div>
-<div><div class="testimonial-name">Deepak J.</div><div class="testimonial-role">Content Creator, Hyderabad</div></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ========== WHY AI WAR ROOM ========== -->
-<section class="section why-section" id="why">
-<div class="container">
-<h2 class="section-title fade-up">Why <span class="highlight">AI War Room</span>?</h2>
-<p class="section-subtitle fade-up">We don't just teach AI — we make you dangerous with it</p>
-
-<div class="why-grid fade-up">
-<div class="why-card"><span class="why-num">25+</span><span class="why-label">AI Tools Covered</span></div>
-<div class="why-card"><span class="why-num">18</span><span class="why-label">Hours of Learning</span></div>
-<div class="why-card"><span class="why-num">100%</span><span class="why-label">Hands-On Training</span></div>
-<div class="why-card"><span class="why-num">₹5K+</span><span class="why-label">Free Bonuses</span></div>
-</div>
-</div>
-</section>
-
-<!-- ========== FAQ ========== -->
-<section class="section" id="faq">
-<div class="container">
-<h2 class="section-title fade-up">Frequently Asked <span class="highlight">Questions</span></h2>
-<p class="section-subtitle fade-up">Got doubts? We've got answers.</p>
-
-<div class="faq-list fade-up">
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">What is this workshop about? <span class="arrow">▼</span></div>
-<div class="faq-a">AI War Room is a 2-day intensive, hands-on workshop where you'll learn 25+ AI tools including ChatGPT, Claude, Midjourney, and more. You'll leave with practical skills to automate your work, create content faster, and build AI-powered products.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">Is this suitable for beginners? <span class="arrow">▼</span></div>
-<div class="faq-a">Absolutely! This workshop is designed for all levels. Whether you've never used ChatGPT or you're already familiar with AI, you'll learn practical techniques that will level up your skills significantly.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">Will this be live or pre-recorded? <span class="arrow">▼</span></div>
-<div class="faq-a">This is a LIVE interactive session! You'll be learning in real-time with fellow participants, participating in exercises, and getting your questions answered on the spot. This is not a passive lecture — it's a war room.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">I have a full-time job. Can I manage? <span class="arrow">▼</span></div>
-<div class="faq-a">Yes! The workshop is on Saturday & Sunday (10 AM - 7 PM IST), so your work won't be affected. We specifically chose weekends so working professionals can attend without taking leave.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">Will I receive a certificate? <span class="arrow">▼</span></div>
-<div class="faq-a">Yes! You'll receive a certificate of completion signed by the mentor after attending the full workshop. It's a great way to showcase your AI skills on LinkedIn.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">Will recordings be available? <span class="arrow">▼</span></div>
-<div class="faq-a">The sessions will not be recorded as this is a live, interactive experience. We highly recommend attending both days live to get the full value of the workshop.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">When will I receive the bonuses? <span class="arrow">▼</span></div>
-<div class="faq-a">All bonuses will be shared within 48 hours of the workshop completion. You'll receive them via email.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">Why is it only ₹99? What's the catch? <span class="arrow">▼</span></div>
-<div class="faq-a">No catch. We believe everyone should have access to AI education. The ₹99 price is our way of making this accessible while ensuring committed participants. The real value of this workshop is ₹1,999+ — and you'll feel that from the very first session.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">I made payment but didn't receive confirmation. <span class="arrow">▼</span></div>
-<div class="faq-a">Don't worry! Please reach out to us and our support team will get back to you within 6 hours with your confirmation and access details.</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ========== FINAL CTA ========== -->
-<section class="final-cta" id="register">
-<div class="container">
-<h2 class="fade-up">Ready to Join the <span class="highlight">AI War Room</span>?</h2>
-<p class="fade-up">22-23 Feb | Weekend | 10 AM - 7 PM IST | Only ₹99</p>
-<div class="price-block fade-up">
-<span class="price-old">₹1,999</span>
-<span class="price-new">₹99</span>
-<span class="price-off">95% OFF</span>
-</div>
-<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn fade-up">⚡ Register Now — Limited Seats!</a>
-</div>
-</section>
-
-<!-- ========== STICKY BAR ========== -->
-<div class="sticky-bar" id="stickyBar">
-<div class="price-info">
-<span class="old">₹1,999</span>
-<span class="new">₹99</span>
-</div>
-<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn cta-btn-sm">Register Now ⚡</a>
+<!-- ===== CONVINCE ===== -->
+<div class="convince-section">
+<h1>Still not convinced?</h1>
+<p>Check our reviews, check our LinkedIn, check our social proof. We're sure you'll have no problem getting value from this workshop 😁</p>
+<a href="https://rzp.io/rzp/n4VXqelQ">Join Now</a>
 </div>
 
-<!-- ========== FOOTER ========== -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
-<p>© 2026 AI War Room by Nirmal Sistiny. All rights reserved.</p>
+<img src="https://course.growthschool.io/images/newgsblack.svg" alt="Logo">
+<a href="#">Privacy Policy</a>
+<a href="#">Refund Policy</a>
+<div class="addr">AI War Room by Nirmal Sistiny<br>© 2026 All rights reserved.</div>
 </footer>
 
+<!-- ===== STICKY BAR ===== -->
+<div class="sticky-bar">
+<div>
+<div class="s-price">₹99 <span class="strike">₹1,999</span> <span class="off">95% OFF</span></div>
+<div class="s-deadline">Deadline 22 February 2026</div>
+</div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:10px 32px;font-size:1rem;font-weight:600">Join Now</a>
+</div>
+
 <script>
-// ===== COUNTDOWN TIMER =====
-function updateCountdown(){
-const target=new Date('2026-02-22T04:30:00Z').getTime();
-const now=Date.now();
-const diff=target-now;
-if(diff<=0){
-document.getElementById('cd-days').textContent='00';
-document.getElementById('cd-hours').textContent='00';
-document.getElementById('cd-mins').textContent='00';
-document.getElementById('cd-secs').textContent='00';
-return;
+function toggleCur(el){
+var d=el.nextElementSibling;
+d.classList.toggle('open');
 }
-const d=Math.floor(diff/(1000*60*60*24));
-const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const m=Math.floor((diff%(1000*60*60))/(1000*60));
-const s=Math.floor((diff%(1000*60))/1000);
-document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
-document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
-document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-// ===== STICKY BAR =====
-const stickyBar=document.getElementById('stickyBar');
-const heroCta=document.getElementById('hero-cta');
-function checkSticky(){
-const rect=heroCta.getBoundingClientRect();
-if(rect.bottom<0){
-stickyBar.classList.add('visible');
-}else{
-stickyBar.classList.remove('visible');
-}
-}
-window.addEventListener('scroll',checkSticky,{passive:true});
-
-// ===== FAQ TOGGLE =====
 function toggleFaq(el){
-const answer=el.nextElementSibling;
-const isOpen=answer.classList.contains('open');
-document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
-document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));
-if(!isOpen){
-answer.classList.add('open');
-el.classList.add('open');
+var q=el.querySelector('.faq-q');
+var a=el.querySelector('.faq-a');
+q.classList.toggle('open');
+a.classList.toggle('open');
 }
-}
-
-// ===== SCROLL ANIMATIONS =====
-const observer=new IntersectionObserver((entries)=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add('visible');
-}
-});
-},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
