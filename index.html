@@ -364,9 +364,8 @@ body{font-family:'IBM Plex Sans',sans-serif}
 
 </div>
 
-<script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SGCJbJT39Px5Hv" async></script>
-<div id="rzp-hidden" style="display:none">
-<form id="rzp-form"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SGCJbJT39Px5Hv" async></script></form>
+<div id="rzp-hidden" style="position:absolute;left:-9999px;opacity:0;pointer-events:none">
+<form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SGCJbJT39Px5Hv" async></script></form>
 </div>
 <script>
 function triggerRazorpay(){var btn=document.querySelector('#rzp-hidden .razorpay-payment-button');if(btn){btn.click()}else{window.open('https://rzp.io/rzp/pKctISH','_blank')}}
