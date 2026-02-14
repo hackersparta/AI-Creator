@@ -1,496 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI War Room — Master 25+ AI Tools in One Weekend</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Workshop — Master 25+ AI Tools</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preload" as="style" href="https://use.typekit.net/jqj3wyb.css"/>
+<link rel="stylesheet" href="https://use.typekit.net/jqj3wyb.css"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'IBM Plex Sans',sans-serif;background:#fff;color:#000;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-img{max-width:100%}
-.green{color:#4E9F3D}
-.green-grad{background:linear-gradient(117.64deg,#B3C28B -29.36%,#4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.btn-green{background:linear-gradient(128deg,#4e9f3d,#afc570);color:#fff;border:none;cursor:pointer;font-family:inherit;transition:opacity .2s}
-.btn-green:hover{opacity:.9}
-
-/* ===== MARQUEE TOP BAR ===== */
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.top-bar{background:#E53935;padding:12px 0;overflow:hidden;white-space:nowrap}
-.top-bar-inner{display:inline-flex;animation:marquee 15s linear infinite}
-.top-bar span{font-size:1.1rem;font-weight:600;margin:0 8px}
-.top-bar .txt{color:#fff}
-.top-bar .disc{color:#FEF08A}
-.top-bar .star{color:#FEF08A}
-
-/* ===== HERO ===== */
-.hero{text-align:center;padding:40px 16px 30px;position:relative}
-.hero-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
-.hero-logo img{height:36px}
-.hero-logo .li-badge{display:flex;align-items:center;gap:6px;background:#0077B5;color:#fff;padding:4px 10px;border-radius:4px;font-size:.75rem;font-weight:600}
-.hero-logo .li-badge svg{width:16px;height:16px;fill:#fff}
-.hero h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:600;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;-webkit-text-stroke:.5px black}
-.hero-sub{font-size:1.05rem;max-width:600px;margin:0 auto 24px;line-height:1.6}
-
-/* Date pills */
-.date-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
-.d-pill{display:flex;align-items:center;gap:8px;background:#000;color:#fff;padding:6px 14px;border-radius:4px;font-size:.95rem}
-.d-pill svg{width:16px;height:16px;fill:#fff;flex-shrink:0}
-
-/* Video thumbnail */
-.hero-video{position:relative;max-width:550px;margin:24px auto;border-radius:10px;overflow:hidden}
-.hero-video img{width:100%;display:block}
-.hero-video .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2)}
-.hero-video .play-overlay svg{width:40px;height:40px;fill:#fff}
-
-/* CTA */
-.hero-cta{margin-top:20px}
-.hero-cta button,.hero-cta a{display:inline-block;font-size:1.2rem;font-weight:600;padding:16px 32px;border-radius:50px;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)}
-
-/* ===== RATED ===== */
-.rated-section{display:flex;justify-content:center;padding:24px 16px 0}
-.rated-card{display:flex;flex-direction:column;align-items:center;gap:20px;background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)}
-.rated-card h2{font-size:1.2rem;font-weight:400}
-.rated-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.rb{display:flex;align-items:center;gap:8px;background:#DBEEBA;border:1px solid #A6A6A6;border-radius:8px;padding:8px 12px;min-width:150px}
-.rb img{width:28px;height:28px;object-fit:contain;border-radius:4px}
-.rb .rb-score{font-weight:700;font-size:.95rem}
-.rb .rb-source{font-size:.85rem;color:#555}
-
-/* ===== LEARNER MARQUEE ===== */
-@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes scrollRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
-.learner-section{padding:48px 16px;text-align:center}
-.learner-section h2{font-size:clamp(1.4rem,4vw,1.8rem);font-weight:600;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto}
-.marquee-wrap{overflow:hidden;width:100%;margin-bottom:16px}
-.marquee-track{display:flex;width:max-content}
-.marquee-track.left{animation:scrollLeft 30s linear infinite}
-.marquee-track.right{animation:scrollRight 30s linear infinite}
-.marquee-track img{width:120px;height:120px;object-fit:contain;margin:0 8px;flex-shrink:0}
-
-/* ===== FEATURED IN ===== */
-.featured-section{display:flex;justify-content:center;padding:40px 16px}
-.featured-card{background:linear-gradient(128deg,#4e9f3d,#afc570);border-radius:12px;padding:32px;text-align:center;width:90%;max-width:700px}
-.featured-card h1{color:#fff;font-size:1.8rem;font-weight:700;margin-bottom:24px}
-.featured-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
-.featured-logos img{height:28px;object-fit:contain}
-
-/* ===== TOOLS GRID ===== */
-.tools-section{text-align:center;padding:40px 16px}
-.tools-section h1{font-size:1.8rem;font-weight:500;margin-bottom:32px}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:900px;margin:0 auto}
-@media(min-width:768px){.tools-grid{grid-template-columns:repeat(6,1fr)}}
-.tool-item{display:flex;align-items:center;justify-content:center;border:1px solid #ddd;height:56px;background:#fff;border-radius:8px;padding:4px}
-.tool-item img{height:24px;width:auto}
-@media(min-width:768px){.tool-item img{height:36px}}
-.tool-item.blur{filter:blur(3px)}
-
-/* ===== CURRICULUM ===== */
-.curriculum-section{padding:48px 16px;text-align:center;position:relative}
-.curriculum-section h1{font-size:1.8rem;font-weight:500;margin-bottom:8px}
-.curriculum-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:900px;margin:24px auto 0;text-align:left}
-@media(min-width:768px){.curriculum-grid{grid-template-columns:repeat(3,1fr)}}
-.cur-card{background:linear-gradient(165deg,#95dd85,#d8e9a8);border-radius:8px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);cursor:pointer;min-height:70px}
-.cur-card .cur-icon{background:#fff;border-radius:12px;padding:4px;flex-shrink:0}
-.cur-card .cur-icon img{height:24px;width:auto}
-.cur-card p{font-size:1rem;font-weight:500;flex:1}
-.cur-card svg{width:20px;height:20px;flex-shrink:0}
-.cur-detail{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.cur-detail.open{max-height:500px}
-.cur-detail-inner{padding:16px;background:linear-gradient(180deg,#D8E9A8 3%,rgba(255,255,255,0) 100%)}
-.cur-detail-inner ul{padding-left:20px;list-style:disc}
-.cur-detail-inner li{margin-bottom:8px;font-size:.95rem;color:#333}
-
-/* ===== BONUSES ===== */
-.bonus-section{padding:40px 16px;text-align:center}
-.bonus-section h1{font-size:1.8rem;font-weight:700;margin-bottom:32px}
-.bonus-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:800px;margin:0 auto}
-@media(min-width:768px){.bonus-grid{grid-template-columns:repeat(2,1fr)}}
-.bonus-card{background:linear-gradient(149.11deg,#1E5128 -16.9%,#4E9F3D 129.3%);color:#fff;border-radius:8px;padding:24px 32px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;min-height:120px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.bonus-card .b-num{font-size:2.5rem;font-weight:700;flex-shrink:0}
-.bonus-card p{font-size:1rem;position:relative;z-index:1}
-.bonus-card .b-img{position:absolute;right:0;top:50%;transform:translateY(-50%);height:100%;width:auto;object-fit:contain;opacity:.5}
-
-/* ===== MENTORS ===== */
-.mentors-section{padding:48px 16px;text-align:center}
-.mentors-section h2{font-size:1.8rem;font-weight:500;margin-bottom:8px}
-.mentors-section .sub{color:#555;font-size:1rem;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto}
-.mentors-grid{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none}
-.mentors-grid::-webkit-scrollbar{display:none}
-.mentor-card{flex-shrink:0;width:240px;background:#fff;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;transition:box-shadow .3s}
-.mentor-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.mentor-card .m-img{width:100%;height:260px;object-fit:cover}
-.mentor-card .m-info{padding:16px}
-.mentor-card .m-info h3{font-size:1rem;font-weight:500;margin-bottom:4px}
-.mentor-card .m-info .m-role{font-size:.85rem;color:#555;margin-bottom:8px}
-.mentor-card .m-info .m-company{height:32px;object-fit:contain}
-
-/* ===== TESTIMONIALS ===== */
-.testimonials-section{padding:48px 16px;text-align:center}
-.testimonials-section .label{font-size:.85rem;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:1px}
-.testimonials-section h2{font-size:1.8rem;font-weight:500;margin:8px 0 24px}
-.test-row{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none;margin-bottom:16px}
-.test-row::-webkit-scrollbar{display:none}
-.test-card{flex-shrink:0;width:270px;height:370px;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden}
-.test-card.video{position:relative;cursor:pointer}
-.test-card.video img{width:100%;height:100%;object-fit:cover}
-.test-card.video .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.test-card.video .v-name{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,.5);color:#fff;padding:4px 8px;border-radius:4px;font-weight:700;font-size:.85rem}
-.test-card.text{padding:20px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
-.test-card.text .li-icon{position:absolute;top:0;right:0;width:32px;height:32px;border-radius:0 8px 0 8px}
-.test-card.text p{color:#555;font-size:.9rem;line-height:1.6}
-.test-card.text .t-author{font-weight:700;color:#000;margin-top:12px}
-
-/* ===== WHY SECTION ===== */
-.why-section{padding:48px 16px;text-align:center}
-.why-section h1{font-size:1.8rem;font-weight:500;margin-bottom:16px}
-.why-section .why-desc{font-size:1.1rem;max-width:700px;margin:0 auto 32px;line-height:1.6}
-.why-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-.why-stat{border:1px solid #000;border-radius:8px;width:160px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.why-stat svg{width:32px;height:32px}
-.why-stat h2{font-size:1.8rem;font-weight:600}
-.why-stat p{font-size:.85rem;font-weight:500;color:#555}
-.why-logo{display:flex;justify-content:center;margin-bottom:16px}
-.why-logo .logo-box{border:1px solid #000;border-radius:8px;padding:16px 24px}
-.why-logo .logo-box img{height:48px;width:auto;object-fit:contain}
-.why-backed{text-align:center;margin-bottom:24px;color:#555;font-size:1rem}
-.why-people{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.why-people .person{position:relative;width:112px;height:112px;border-radius:8px;overflow:hidden}
-.why-people .person img{width:100%;height:100%;object-fit:cover}
-.why-people .person .p-name{position:absolute;bottom:4px;left:0;right:0;text-align:center;color:#fff;font-size:.8rem;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-
-/* ===== PRICE CARD ===== */
-.price-section{padding:48px 16px;text-align:center;position:relative}
-.price-section h1{font-size:1.8rem;font-weight:700;margin-bottom:24px}
-.price-card{max-width:420px;margin:0 auto;background:#4e9f3d;border-radius:16px;padding:32px;color:#fff;position:relative;overflow:hidden}
-.price-card .p-bg{position:absolute;top:0;left:0;width:100%;height:200px;object-fit:cover;z-index:0}
-.price-card-inner{position:relative;z-index:1}
-.price-card h2{font-size:3rem;font-weight:500}
-.price-card .p-orig{font-size:1.2rem}
-.price-card .p-orig .strike{text-decoration:line-through}
-.price-card .p-desc{margin-top:20px;font-size:1.1rem}
-.price-card ul{margin-top:20px;list-style:none;padding:0}
-.price-card li{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:1rem;font-weight:500}
-.price-card li img{width:12px;margin-top:5px;flex-shrink:0}
-.price-card .p-cta{margin-top:24px}
-.price-card .p-cta a{display:block;background:#fff;color:#000;font-size:1.1rem;font-weight:500;padding:14px;border-radius:50px;text-align:center;transition:background .2s}
-.price-card .p-cta a:hover{background:#f0f0f0}
-
-/* ===== FAQ ===== */
-.faq-section{padding:48px 16px}
-.faq-wrap{max-width:800px;margin:0 auto;background:#f0f0f0;border-radius:24px;padding:32px 16px}
-@media(min-width:768px){.faq-wrap{padding:48px 48px}}
-.faq-wrap h1{text-align:center;font-size:1.8rem;font-weight:700;margin-bottom:32px}
-.faq-item{border:1px solid #000;border-radius:12px;padding:12px 16px;margin-bottom:12px;cursor:pointer}
-.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:1rem;font-weight:500}
-.faq-q svg{width:20px;height:20px;flex-shrink:0;transition:transform .3s}
-.faq-q.open svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
-.faq-a.open{max-height:500px}
-.faq-a p{padding-top:12px;color:#555;font-size:.95rem;line-height:1.6}
-
-/* ===== CONVINCE ===== */
-.convince-section{max-width:800px;margin:-40px auto 0;background:#1e5128;border-radius:24px;padding:48px 32px 32px;text-align:center;color:#fff;position:relative;overflow:hidden;z-index:1}
-@media(min-width:768px){.convince-section{margin:-80px auto 0;padding:80px 48px 48px}}
-.convince-section h1{font-size:2rem;font-weight:700;margin-bottom:24px}
-.convince-section p{font-size:1rem;margin-bottom:24px;line-height:1.6}
-.convince-section a{display:inline-block;background:#fff;color:#000;font-size:1.1rem;font-weight:500;padding:14px 32px;border-radius:50px;transition:background .2s}
-
-/* ===== FOOTER ===== */
-.footer{text-align:center;padding:32px 16px 100px}
-.footer img{height:48px;margin-bottom:12px}
-.footer a{display:block;color:#555;font-weight:500;margin-bottom:4px}
-.footer .addr{color:#555;font-weight:500;margin-top:24px;font-size:.9rem;line-height:1.6}
-
-/* ===== STICKY BAR ===== */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(216,233,168,.7);backdrop-filter:blur(8px);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;z-index:100;border-top:1px solid #ccc}
-.sticky-bar .s-price{font-size:1.5rem;font-weight:500}
-.sticky-bar .s-price .strike{text-decoration:line-through;font-size:1rem}
-.sticky-bar .s-price .off{font-size:.9rem}
-.sticky-bar .s-deadline{font-size:1rem}
-.sticky-bar a{font-size:1rem;font-weight:600;padding:10px 32px;border-radius:50px}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-.why-stat{width:130px;height:130px}
-.convince-section{margin-left:16px;margin-right:16px}
-}
+body{font-family:'IBM Plex Sans',sans-serif}
+@keyframes marquee{0%{transform:translateX(0%)}100%{transform:translateX(-100%)}}
+.animate-marquee{animation:marquee 20s linear infinite;white-space:nowrap}
+@keyframes marqueeLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes marqueeRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.animate-marquee-left{animation:marqueeLeft 30s linear infinite}
+.animate-marquee-right{animation:marqueeRight 30s linear infinite}
+.scrollbar-hide::-webkit-scrollbar{display:none}
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
 </style>
 </head>
-<body>
+<body class="antialiased bg-white">
 
-<!-- ===== TOP MARQUEE BAR ===== -->
-<div class="top-bar">
-<div class="top-bar-inner">
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
-<span class="star">⭐</span><span class="txt">Limited Period offer</span><span class="star">⭐</span><span class="disc">Flat 95% Off</span>
+<!-- TOP MARQUEE -->
+<div class="w-full py-3 overflow-hidden" style="background-color:#E53935">
+<div class="flex items-center animate-marquee">
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span>
+<span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FFFFFF">Limited Period offer</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span><span class="font-semibold text-xl" style="color:#FEF08A">Flat 95% Off</span><span class="font-bold text-xl mx-2" style="color:#FEF08A">⭐</span>
 </div>
 </div>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-<div class="hero-logo">
-<img src="https://course.growthschool.io/images/newgsblack.svg" alt="Logo">
+<!-- HERO -->
+<div class="min-h-screen bg-white">
+<div class="relative flex flex-col items-center justify-top mt-10 px-4 md:px-8 lg:px-16 overflow-x-clip overflow-y-visible">
+<div class="absolute top-0 left-[75%] md:left-[70%] transform -translate-x-1/2 w-[300px] md:w-[460px] h-[300px] md:h-[460px] z-0 md:block pointer-events-none hidden">
+<img src="https://ws.growthschool.io/images/growthschool/topback.png" alt="" class="w-full h-full object-cover opacity-100"/>
+</div>
+<img alt="Logo" width="300" height="100" class="w-[180px] md:w-[300px] h-auto mb-8 md:mb-12 relative z-10" src="https://course.growthschool.io/images/newgsblack.svg"/>
+<h1 class="text-3xl md:text-[40px] font-semibold mb-6 relative z-10 text-center md:w-[60%] w-full" style="-webkit-text-stroke:0.5px black">Learn <span class="text-[#4E9F3D]">25+ AI Tools</span> to Save Time, Money, and Supercharge Your Skills.</h1>
+<p class="text-lg md:text-xl text-center relative z-10 md:w-[50%] w-full">This hands-on <span class="text-[#4E9F3D] font-semibold">AI workshop</span> transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
+<div class="flex flex-col justify-center gap-3 md:gap-5 mb-10 mt-6 relative z-10 items-center">
+<div class="flex items-center justify-center gap-4">
+<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">22nd Feb Saturday</p></div>
+<div class="flex items-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><p class="text-base">10 AM to 7 PM IST</p></div>
+</div>
+<div class="flex items-center justify-center gap-4">
+<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">23rd Feb Sunday</p></div>
+<div class="flex items-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><p class="text-base">10 AM to 7 PM IST</p></div>
+</div>
+</div>
+<div class="relative mb-6 z-10">
+<img alt="Video Thumbnail" width="550" height="310" class="w-full md:w-[550px] h-auto object-cover rounded-lg" src="hero-nirmal.jpg"/>
+<button class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors rounded-lg" aria-label="Play video">
+<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="text-white h-10 w-10" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
+</button>
+</div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="mt-4 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 relative z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer hover:shadow-[0_0_20px_15px_rgba(78,159,61,0.7)] transition-shadow text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Join Now</a>
 </div>
 
-<h1>Learn <span class="green">25+ AI Tools</span> to Save Time, Money, and Supercharge Your Skills.</h1>
-<p class="hero-sub">This hands-on <span class="green" style="font-weight:600">AI workshop</span> transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
-
-<div class="date-row">
-<div class="d-pill"><svg viewBox="0 0 1024 1024"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"/></svg>22nd Feb Saturday</div>
-<div class="d-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 AM to 7 PM IST</div>
+<!-- RATED -->
+<div class="relative flex flex-col items-center justify-center p-6 md:p-8 mt-10 overflow-visible">
+<div class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 md:p-4 h-40 w-40 md:h-60 md:w-60 hidden md:block pointer-events-none z-0">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/secondback.png" alt="" class="w-full h-full"/>
 </div>
-<div class="date-row">
-<div class="d-pill"><svg viewBox="0 0 1024 1024"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"/></svg>23rd Feb Sunday</div>
-<div class="d-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 AM to 7 PM IST</div>
+<div class="relative z-10 flex flex-col items-center justify-around gap-6 md:gap-8 w-full md:w-auto h-auto shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] bg-white px-6 py-5 md:px-8 md:py-6 rounded-lg">
+<h2 class="text-xl md:text-2xl font-normal text-center">Rated</h2>
+<div class="flex items-center justify-around gap-3 md:gap-5">
+<div class="flex items-center bg-[#DBEEBA] shadow-md rounded-lg p-2 md:p-3 border border-[#A6A6A6] w-36 md:w-52">
+<img alt="Star" width="40" height="40" class="w-6 h-6 md:w-10 md:h-10 object-cover rounded-md mr-2" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/star.webp"/>
+<div class="text-left"><h2 class="text-base md:text-lg font-semibold mb-1 md:mb-2">4.7/5 (5625)</h2><p class="text-sm md:text-base text-gray-600">Trustpilot</p></div>
+</div>
+<div class="flex items-center bg-[#DBEEBA] shadow-md rounded-lg p-2 md:p-3 border border-[#A6A6A6] w-36 md:w-52">
+<img alt="Google" width="40" height="40" class="w-6 h-6 md:w-10 md:h-10 object-cover rounded-md mr-2" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/google.webp"/>
+<div class="text-left"><h2 class="text-base md:text-lg font-semibold mb-1 md:mb-2">4.4/5 (3704)</h2><p class="text-sm md:text-base text-gray-600">Google Reviews</p></div>
+</div>
+</div>
+</div>
 </div>
 
-<!-- Hero Image -->
-<div class="hero-video" style="cursor:default">
-<img src="hero-nirmal.jpg" alt="Nirmal Sistiny - AI War Room">
+<!-- LEARNER MARQUEE -->
+<div class="w-full mt-16">
+<div class="flex justify-center"><h2 class="text-3xl font-semibold text-center mb-12 md:w-3/5 px-3 md:px-0">Join who have successfully completed the program to become an AI-powered professional <span style="background:linear-gradient(117.64deg, #B3C28B -29.36%, #4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">2 Million+ Global Learners</span></h2></div>
+<div class="relative overflow-hidden w-full">
+<div class="flex animate-marquee-left w-max">
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma1.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma2.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma3.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma4.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma5.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma6.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma7.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma8.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma1.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma2.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma3.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma4.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma5.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma6.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma7.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma8.png"/></div>
+</div>
+</div>
+<div class="relative overflow-hidden w-full mt-6">
+<div class="flex animate-marquee-right w-max">
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma11.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma12.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma13.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma15.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma14.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma16.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma17.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma18.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma11.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma12.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma13.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma15.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma14.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma16.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma17.png"/></div>
+<div class="shrink-0 mx-2 w-[120px]"><img alt="" width="120" height="120" class="w-[120px] h-[120px] object-contain" src="https://ws.growthschool.io/images/growthschool/ma18.png"/></div>
+</div>
+</div>
 </div>
 
-<div class="hero-cta">
-<a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:16px 32px;font-size:1.2rem;font-weight:600;display:inline-block;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)">Join Now</a>
+<!-- FEATURED IN -->
+<div class="flex items-center justify-center p-8 md:mt-16 mt-10">
+<div class="p-8 rounded-lg shadow-xl flex flex-col items-center justify-center w-[90%] xl:w-[60%] lg:w-[80%] h-auto" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">
+<h1 class="text-3xl font-bold mb-8 text-center text-white">Featured In</h1>
+<div class="grid grid-cols-3 gap-6 md:flex md:space-x-6">
+<div class="shrink-0"><img alt="" width="72" height="28" class="w-full h-auto object-contain" style="max-width:72px;max-height:28px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f1.webp"/></div>
+<div class="shrink-0"><img alt="" width="72" height="28" class="w-full h-auto object-contain" style="max-width:72px;max-height:28px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f2.webp"/></div>
+<div class="shrink-0"><img alt="" width="72" height="28" class="w-full h-auto object-contain" style="max-width:72px;max-height:28px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f3.webp"/></div>
+<div class="shrink-0"><img alt="" width="72" height="20" class="w-full h-auto object-contain" style="max-width:72px;max-height:20px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f4.webp"/></div>
+<div class="shrink-0"><img alt="" width="72" height="20" class="w-full h-auto object-contain" style="max-width:72px;max-height:20px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f5.webp"/></div>
+<div class="shrink-0"><img alt="" width="72" height="20" class="w-full h-auto object-contain" style="max-width:72px;max-height:20px" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f6.webp"/></div>
+</div>
+</div>
+</div>
+
+<!-- TOOLS -->
+<div class="flex flex-col items-center justify-center md:py-12 py-6 px-2 md:px-0 md:mt-10 mt-6">
+<h1 class="text-2xl md:text-4xl font-medium mb-5 md:mb-10 text-center">Learn <span>25+ AI Tools</span></h1>
+<div class="grid grid-cols-3 gap-4 max-w-6xl w-full md:grid-cols-6">
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t1.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t2.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t3.webp" alt="" class="md:h-10 w-auto h-5"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t4.webp" alt="" class="md:h-10 w-auto h-7"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t5.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t6.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t7.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t8.webp" alt="" class="md:h-10 w-auto h-7"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t9.webp" alt="" class="md:h-10 w-auto h-7"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t10.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t11.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t12.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t13.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t14.webp" alt="" class="md:h-10 w-auto h-8"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t15.webp" alt="" class="md:h-10 w-auto h-6"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t16.webp" alt="" class="md:h-10 w-auto h-8"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t17.webp" alt="" class="md:h-10 w-auto h-8"/></div>
+<div class="flex items-center justify-center border border-gray-300 h-14 bg-white md:p-3 p-1 rounded-lg blur-sm"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t18.webp" alt="" class="md:h-10 w-auto h-8"/></div>
+</div>
+</div>
+
+<!-- CURRICULUM -->
+<div class="relative flex flex-col items-center justify-center py-12 px-4 overflow-visible">
+<img src="https://ws.growthschool.io/images/growthschool/Ellipse%209.webp" alt="" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover z-0 w-[100px] h-[100px] md:w-full md:h-auto pointer-events-none"/>
+<div class="relative z-10">
+<h1 class="text-3xl font-medium text-center mt-4 md:text-4xl md:mt-28">Here's What You'll Learn in the</h1>
+<h1 class="text-3xl font-medium mb-8 text-center md:text-4xl md:mb-12">2-Day AI Mastermind</h1>
+</div>
+<div class="relative z-10 grid grid-cols-1 gap-8 max-w-6xl w-full md:grid-cols-3" id="curriculum">
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw1.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Understanding Generative AI &amp; Prompt Engineering</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Gain a deep, working knowledge of how generative AI models like ChatGPT, Claude, and Gemini function.</li><li class="mb-2">Learn the key principles of prompt engineering to get precise, high-quality outputs from any AI tool.</li><li class="mb-2">Understand how to effectively communicate with AI, whether for generating content, code, images, or strategy ideas.</li><li class="mb-2">Walk away with practical skills to leverage AI for a variety of tasks and business needs.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw2.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">ChatGPT and 20+ AI Tools</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Explore a curated set of 20+ powerful AI tools designed to save you hours of manual work.</li><li class="mb-2">From writing and research to brainstorming, task management, and design—this session will give you the ultimate productivity toolkit.</li><li class="mb-2">You'll not only discover which tools to use, but also learn how to integrate them into your daily workflow for maximum efficiency.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw3.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Create AI-Powered Writing Assistants</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Build your own AI writing bot trained to sound just like you.</li><li class="mb-2">Use GPT-powered tools to fine-tune AI to replicate your unique tone and writing style.</li><li class="mb-2">Easily write blogs, social posts, emails, or scripts that feel personal and on-brand.</li><li class="mb-2">Learn the future of scalable, authentic content creation.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw4.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Automate Workflows with AI and No-Code Platforms</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Learn to build AI-driven automations using no-code platforms like Make.com.</li><li class="mb-2">Automate tasks like posting content on LinkedIn, sending follow-up emails, and updating databases.</li><li class="mb-2">Make AI work in the background so you can focus on big-picture thinking.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw5.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Explore Image and Video Generation with AI</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Dive into AI-generated media with tools like MidJourney and Runway ML.</li><li class="mb-2">Create studio-quality images, social media visuals, short videos, and cinematic content with prompts.</li><li class="mb-2">Perfect for marketers, creators, and entrepreneurs seeking to enhance visual storytelling.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw6.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Build Digital Products without Code</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">No coding knowledge needed to build and launch products.</li><li class="mb-2">Use no-code platforms like Vibe Coding and AI tools to create apps, landing pages, automations, and digital products.</li><li class="mb-2">Gain the power to turn your ideas into working solutions without a developer.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw7.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Use AI for Data Analysis and Decision-Making</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Learn how to clean, analyze, and make sense of raw data with AI.</li><li class="mb-2">Extract insights and create visual dashboards in minutes from sales data, survey results, and business metrics.</li><li class="mb-2">Use AI as your personal data analyst to make faster, smarter decisions.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw8.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Content Creation Using GenAI</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Speed up content creation and improve quality with AI.</li><li class="mb-2">Generate scroll-stopping content for LinkedIn, Instagram, emails, and websites quickly.</li><li class="mb-2">Practice writing hooks, headlines, blogs, carousels, and scripts using AI, keeping the human touch intact.</li></ul></div></div></div>
+<div class="w-full"><div class="flex items-center justify-between gap-4 rounded-lg p-6 shadow-lg cursor-pointer w-full h-[80px] cur-card" style="background:linear-gradient(165deg, #95dd85, #d8e9a8)" onclick="toggleCur(this)"><div class="p-1 bg-white rounded-xl"><img src="https://ws.growthschool.io/images/growthschool/lw9.webp" alt="" class="h-6 w-auto"/></div><p class="text-xl font-medium">Emerging AI Trends</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-6 w-auto shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-500 ease-in-out overflow-hidden max-h-0 opacity-0 cur-detail"><div class="p-4" style="background:linear-gradient(180deg, #D8E9A8 3.36%, rgba(255, 255, 255, 0) 100.12%)"><ul class="list-disc p-6"><li class="mb-2">Stay ahead in the rapidly evolving AI world.</li><li class="mb-2">Discover the latest tools, innovations, and business applications you should watch.</li><li class="mb-2">Learn how top professionals use AI for growth, cost-saving, and gaining a competitive edge.</li></ul></div></div></div>
+</div>
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/third.png" alt="" class="absolute md:top-0 top-10 right-0 md:w-[20%] md:h-96 h-48 w-[30%] z-0 pointer-events-none"/>
+</div>
+
+<!-- BONUSES -->
+<div class="flex flex-col items-center py-8 md:py-6">
+<h1 class="text-3xl font-bold mb-8 text-center">And Also Enjoy <span class="relative inline-block" style="background:linear-gradient(117.64deg, #B3C28B -29.36%, #4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold">Bonuses Worth ₹5000 for FREE!</span></h1>
+<div class="grid grid-cols-1 gap-8 max-w-4xl w-full md:grid-cols-2">
+<div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b1.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">1</div><p class="text-lg relative z-10">List of Gold-Standard and Hidden Prompts for GPT4</p></div>
+<div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b2.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">2</div><p class="text-lg relative z-10">Copy-Paste Template To Using All in one AI tools like Simplified.com</p></div>
+<div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b3.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">3</div><p class="text-lg relative z-10">Step by Step Method of Coding a Website with 0 prior knowledge in tech</p></div>
+<div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b4.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">4</div><p class="text-lg relative z-10">Creating AI generated personas that provide you support of 10 humans using Synthesia</p></div>
+</div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="mt-10 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Join Now</a>
+</div>
+
+<!-- MENTORS -->
+<div class="w-full bg-white py-2 md:py-16">
+<div class="max-w-6xl mx-auto px-4">
+<div class="text-center mb-10 md:mb-16">
+<h2 class="text-3xl md:text-4xl font-medium text-black mb-4">Learn from the top 1% in AI</h2>
+<p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">...as They Guide You Through Cutting-Edge Tools—Transforming the Way You Work and Create</p>
+</div>
+<div class="flex md:grid md:grid-cols-4 gap-5 overflow-x-auto md:overflow-visible scrollbar-hide">
+<div class="shrink-0 w-[240px] sm:w-[260px] bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"><div class="w-full h-[260px] overflow-hidden"><img src="https://course.outskill.com/images/raghu.jpg" alt="Raghuveer Nishthala" class="w-full h-full object-cover"/></div><div class="p-5"><h3 class="text-lg font-medium text-black mb-1">Raghuveer Nishthala</h3><p class="text-sm text-gray-600 mb-3">Brand Marketer</p><div class="flex items-center h-8"><img src="https://course.outskill.com/images/ub.webp" alt="" class="h-8 object-contain"/></div></div></div>
+<div class="shrink-0 w-[240px] sm:w-[260px] bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"><div class="w-full h-[260px] overflow-hidden"><img src="https://course.outskill.com/images/shant.webp" alt="Shantanu Tungare" class="w-full h-full object-cover"/></div><div class="p-5"><h3 class="text-lg font-medium text-black mb-1">Shantanu Tungare</h3><p class="text-sm text-gray-600 mb-3">AI Film Maker - Bulb Chumka</p><div class="flex items-center h-8"><img src="https://course.outskill.com/images/bulbm.png" alt="" class="h-8 object-contain invert"/></div></div></div>
+<div class="shrink-0 w-[240px] sm:w-[260px] bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"><div class="w-full h-[260px] overflow-hidden"><img src="nirmal-mentor.jpg" alt="Nirmal Sistiny" class="w-full h-full object-cover"/></div><div class="p-5"><h3 class="text-lg font-medium text-black mb-1">Nirmal Sistiny</h3><p class="text-sm text-gray-600 mb-3">Founder - AI War Room</p><div class="flex items-center h-8"><img src="https://course.growthschool.io/images/aigs.png" alt="" class="h-8 object-contain"/></div></div></div>
+<div class="shrink-0 w-[240px] sm:w-[260px] bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"><div class="w-full h-[260px] overflow-hidden"><img src="https://course.outskill.com/images/dileep.webp" alt="KVS Dileep" class="w-full h-full object-cover"/></div><div class="p-5"><h3 class="text-lg font-medium text-black mb-1">KVS Dileep</h3><p class="text-sm text-gray-600 mb-3">Head of AI Initiatives</p><div class="flex items-center h-8"><img src="https://course.growthschool.io/images/aigs.png" alt="" class="h-8 object-contain"/></div></div></div>
+</div>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="py-16 md:px-10 flex flex-col items-center">
+<p class="text-sm font-semibold text-gray-600 uppercase">HEAR IT FROM THEM</p>
+<h2 class="text-2xl md:text-4xl font-medium mt-2 mb-8 text-center">See what's possible here</h2>
+<div class="w-full md:w-[90%] flex flex-col items-center">
+<div class="w-full flex gap-6 md:justify-center overflow-x-auto md:overflow-hidden scroll-smooth snap-x snap-mandatory mb-6 scrollbar-hide">
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative w-full h-full cursor-pointer"><img src="https://go.outskill.com/vm1.png" alt="" class="w-full h-full object-cover rounded-lg"/><div class="absolute inset-0 flex items-center justify-center"><button class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">▶</button></div><p class="absolute bottom-2 left-2 text-white font-bold bg-black/50 px-2 py-1 rounded">Ankur Sarkar</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative p-5 h-full flex flex-col justify-between border border-gray-300 rounded-lg shadow-md"><img src="https://go.outskill.com/link.svg" alt="" class="w-8 h-8 absolute top-0 right-0 rounded-md"/><p class="text-gray-700">My day doesn't do without thanks to Growth School webinar attendance experience. I express desk gratitude to Mr V. and all experts who have presented the knowledge. I'm already bootstrapped and dived into refining my skills.</p><p class="mt-3 font-bold">Jayaasrinnivas Patri</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative w-full h-full cursor-pointer"><img src="https://go.outskill.com/vm2.png" alt="" class="w-full h-full object-cover rounded-lg"/><div class="absolute inset-0 flex items-center justify-center"><button class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">▶</button></div><p class="absolute bottom-2 left-2 text-white font-bold bg-black/50 px-2 py-1 rounded">Parvinder Singh Sarin</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative p-5 h-full flex flex-col justify-between border border-gray-300 rounded-lg shadow-md"><img src="https://go.outskill.com/link.svg" alt="" class="w-8 h-8 absolute top-0 right-0 rounded-md"/><p class="text-gray-700">Thanks again everyone at GS Team and the whole community! You are such examples of commitment, joy, and dedication to help people believe that they can do what they couldn't do before!</p><p class="mt-3 font-bold">Simil Simon</p></div></div>
+</div>
+<div class="w-full flex gap-6 md:justify-center overflow-x-auto md:overflow-hidden scroll-smooth snap-x snap-mandatory mb-6 scrollbar-hide">
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative p-5 h-full flex flex-col justify-between border border-gray-300 rounded-lg shadow-md"><img src="https://go.outskill.com/link.svg" alt="" class="w-8 h-8 absolute top-0 right-0 rounded-md"/><p class="text-gray-700">Great great great session! Actually enjoyed jumping into the world of AI. It was actually an eye-opening session! It was really a BOOM! Hat's off to Vaibhav &amp; team!</p><p class="mt-3 font-bold">Parmeet Singh Khanuja</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative w-full h-full cursor-pointer"><img src="https://go.outskill.com/vm3.png" alt="" class="w-full h-full object-cover rounded-lg"/><div class="absolute inset-0 flex items-center justify-center"><button class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">▶</button></div><p class="absolute bottom-2 left-2 text-white font-bold bg-black/50 px-2 py-1 rounded">Harish Prakash</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative p-5 h-full flex flex-col justify-between border border-gray-300 rounded-lg shadow-md"><img src="https://go.outskill.com/link.svg" alt="" class="w-8 h-8 absolute top-0 right-0 rounded-md"/><p class="text-gray-700">Massive thanks to Prashanth, Phani, Vaibhav, Manish, PK, and the entire Growth School team for absolutely over-delivering in today's Gen AI Bootcamp session! The insights and value were next-level!</p><p class="mt-3 font-bold">Nikhil Ratakonda</p></div></div>
+<div class="snap-center shrink-0 w-[270px] h-[370px] bg-white border border-gray-300 rounded-lg shadow-md"><div class="relative w-full h-full cursor-pointer"><img src="https://go.outskill.com/vm4.png" alt="" class="w-full h-full object-cover rounded-lg"/><div class="absolute inset-0 flex items-center justify-center"><button class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">▶</button></div><p class="absolute bottom-2 left-2 text-white font-bold bg-black/50 px-2 py-1 rounded">Krishnan Tyer</p></div></div>
+</div>
 </div>
 </section>
 
-<!-- ===== RATED ===== -->
-<section class="rated-section">
-<div class="rated-card">
-<h2>Rated</h2>
-<div class="rated-badges">
-<div class="rb">
-<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/star.webp" alt="Trustpilot">
-<div>
-<div class="rb-score">4.7/5 (5625)</div>
-<div class="rb-source">Trustpilot</div>
+<!-- SLIDER -->
+<div class="relative w-full flex flex-col items-center justify-center mt-4 md:mt-10">
+<div class="relative w-[80%] md:w-[60%] overflow-hidden p-6">
+<div class="flex transition-transform duration-500" id="slider" style="transform:translateX(-33.333%)">
+<div class="shrink-0 w-full md:w-[33.333%] px-2 flex justify-center items-center h-auto"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/s1.png" alt="" class="transition-transform duration-500 scale-90" style="width:100%;height:auto;object-fit:contain"/></div>
+<div class="shrink-0 w-full md:w-[33.333%] px-2 flex justify-center items-center h-auto"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/s2.png" alt="" class="transition-transform duration-500 scale-90" style="width:100%;height:auto;object-fit:contain"/></div>
+<div class="shrink-0 w-full md:w-[33.333%] px-2 flex justify-center items-center h-auto"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/s3.png" alt="" class="transition-transform duration-500 scale-110 border-2 rounded-lg border-gray-500" style="width:100%;height:auto;object-fit:contain"/></div>
+<div class="shrink-0 w-full md:w-[33.333%] px-2 flex justify-center items-center h-auto"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/s4.png" alt="" class="transition-transform duration-500 scale-90" style="width:100%;height:auto;object-fit:contain"/></div>
+<div class="shrink-0 w-full md:w-[33.333%] px-2 flex justify-center items-center h-auto"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/s5.png" alt="" class="transition-transform duration-500 scale-90" style="width:100%;height:auto;object-fit:contain"/></div>
 </div>
 </div>
-<div class="rb">
-<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/google.webp" alt="Google">
-<div>
-<div class="rb-score">4.4/5 (3704)</div>
-<div class="rb-source">Google Reviews</div>
+<div class="flex items-center justify-center gap-3 w-full mt-6 px-4">
+<button class="p-2 rounded-full transition" aria-label="Previous" onclick="moveSlider(-1)"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/left.png" class="w-10 h-10" alt="Previous"/></button>
+<button class="p-2 rounded-full transition" aria-label="Next" onclick="moveSlider(1)"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/right.png" class="w-10 h-10" alt="Next"/></button>
 </div>
 </div>
+
+<!-- WHY -->
+<section class="py-10 md:mt-12">
+<div class="text-center mb-8"><h1 class="text-3xl font-medium">Why GrowthSchool?</h1></div>
+<div class="text-center max-w-3xl mx-auto mb-12 p-2">
+<p class="text-2xl"><span>GrowthSchool is where you become the </span><span style="background:linear-gradient(117.64deg, #B3C28B -29.36%, #4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Top 1%</span><span> in your field. We bring the best of Product, Growth, Design, Tech, data and business mentors from brands like </span><span style="background:linear-gradient(117.64deg, #B3C28B -29.36%, #4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Google, Meta, Uber</span><span> etc doing the jobs you want to do tomorrow.</span></p>
 </div>
+<div class="max-w-7xl mx-auto flex justify-center gap-3 md:gap-0 md:space-x-6 mb-8">
+<div class="flex flex-col items-center justify-center border border-black md:w-44 md:h-44 w-40 h-40 rounded-lg">
+<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="h-10 w-auto" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6z"></path></svg>
+<h2 class="mt-4 text-3xl font-semibold">4.7<span class="text-xl font-semibold">/5</span></h2>
+<p class="font-medium text-sm text-gray-700">Trustpilot Rating</p>
+</div>
+<div class="flex flex-col items-center justify-center border border-black md:w-44 md:h-44 w-40 h-40 rounded-lg">
+<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="h-10 w-auto" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path></svg>
+<h2 class="mt-4 text-3xl font-semibold">10.2M+</h2>
+<p class="font-medium text-sm text-gray-700">Global Learners</p>
+</div>
+</div>
+<div class="md:max-w-7xl w-[90%] mx-auto flex items-center justify-center">
+<div class="rounded-lg p-5 border border-black"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/mainlogo.png" alt="" class="w-80 h-12 object-cover rounded-lg"/></div>
+</div>
+<div class="mt-6"><p class="text-lg mb-4 text-center text-gray-700">Backed by the best</p></div>
+<div class="px-2 md:px-0 mx-auto flex flex-row justify-center gap-3 md:gap-0 md:space-x-6">
+<div class="relative md:w-32 md:h-32 h-28 w-28 rounded-lg overflow-hidden"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w3.webp" alt="" class="w-full h-full object-cover"/><div class="absolute inset-0 flex items-end justify-center pb-1"><p class="text-white text-sm font-semibold">Austin Alred</p></div></div>
+<div class="relative md:w-32 md:h-32 h-28 w-28 rounded-lg overflow-hidden"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w2.webp" alt="" class="w-full h-full object-cover"/><div class="absolute inset-0 flex items-end justify-center pb-1"><p class="text-white text-sm font-semibold">Eric Siu</p></div></div>
+<div class="relative md:w-32 md:h-32 h-28 w-28 rounded-lg overflow-hidden"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w1.webp" alt="" class="w-full h-full object-cover"/><div class="absolute inset-0 flex items-end justify-center pb-1"><p class="text-white text-sm font-semibold">Justin Caldbeck</p></div></div>
 </div>
 </section>
 
-<!-- ===== LEARNER MARQUEE ===== -->
-<section class="learner-section">
-<h2>Join who have successfully completed the program to become an AI-powered professional <span class="green-grad">2 Million+ Global Learners</span></h2>
-<div class="marquee-wrap">
-<div class="marquee-track left">
-<img src="https://ws.growthschool.io/images/growthschool/ma1.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma2.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma3.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma4.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma5.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma6.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma7.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma8.png" alt="">
-<img src="https://ws.growthschool.io/images/growthschool/ma1.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma2.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma3.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma4.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma5.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma6.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma7.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma8.png" alt="">
+<!-- PRICE -->
+<section class="md:py-16 p-4 md:p-0 md:mt-8 mt-4 relative overflow-visible">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Ellipse%209.png" alt="" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover z-0 pointer-events-none"/>
+<div class="text-center mb-6 relative z-10">
+<h1 class="md:text-3xl font-bold text-2xl"><span style="background:linear-gradient(117.64deg, #B3C28B -29.36%, #4E9F3D 80.54%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">AI </span>Workshop for Professionals</h1>
 </div>
+<div class="relative max-w-md mx-auto bg-[#4e9f3d] rounded-xl p-8 overflow-hidden z-10">
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/priceback.webp" alt="" class="absolute top-0 left-0 w-full h-56 object-cover z-0"/>
+<div class="relative z-10">
+<div class="text-center">
+<h2 class="text-5xl font-medium text-white">₹99</h2>
+<p class="text-xl text-white"><span class="line-through">₹1,999</span> (Save 95%)</p>
 </div>
-<div class="marquee-wrap">
-<div class="marquee-track right">
-<img src="https://ws.growthschool.io/images/growthschool/ma11.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma12.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma13.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma15.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma14.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma16.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma17.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma18.png" alt="">
-<img src="https://ws.growthschool.io/images/growthschool/ma11.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma12.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma13.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma15.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma14.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma16.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma17.png" alt=""><img src="https://ws.growthschool.io/images/growthschool/ma18.png" alt="">
-</div>
-</div>
-</section>
-
-<!-- ===== FEATURED IN ===== -->
-<section class="featured-section">
-<div class="featured-card">
-<h1>Featured In</h1>
-<div class="featured-logos" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px 32px;align-items:center;justify-items:center;max-width:400px;margin:0 auto">
-<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f1.webp" alt="" style="height:24px"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f2.webp" alt="" style="height:18px"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f3.webp" alt="" style="height:32px"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f4.webp" alt="" style="height:28px"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f5.webp" alt="" style="height:22px"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/f6.webp" alt="" style="height:24px">
-</div>
-</div>
-</section>
-
-<!-- ===== TOOLS ===== -->
-<section class="tools-section">
-<h1>Learn <span>25+ AI Tools</span></h1>
-<div class="tools-grid">
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t1.webp" alt=""></div>
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t2.webp" alt=""></div>
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t3.webp" alt=""></div>
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t4.webp" alt=""></div>
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t5.webp" alt=""></div>
-<div class="tool-item"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t6.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t7.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t8.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t9.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t10.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t11.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t12.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t13.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t14.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t15.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t16.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t17.webp" alt=""></div>
-<div class="tool-item blur"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/t18.webp" alt=""></div>
-</div>
-</section>
-
-<!-- ===== CURRICULUM ===== -->
-<section class="curriculum-section">
-<h1>Here's What You'll Learn in the</h1>
-<h1>2-Day AI Mastermind</h1>
-<div class="curriculum-grid">
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw1.webp" alt=""></div><p>Understanding Generative AI &amp; Prompt Engineering</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Gain a deep, working knowledge of how generative AI models like ChatGPT, Claude, and Gemini function.</li><li>Learn the key principles of prompt engineering to get precise, high-quality outputs from any AI tool.</li><li>Understand how to effectively communicate with AI, whether for generating content, code, images, or strategy ideas.</li><li>Walk away with practical skills to leverage AI for a variety of tasks and business needs.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw2.webp" alt=""></div><p>ChatGPT and 20+ AI Tools</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Explore a curated set of 20+ powerful AI tools designed to save you hours of manual work.</li><li>From writing and research to brainstorming, task management, and design—this session will give you the ultimate productivity toolkit.</li><li>You'll not only discover which tools to use, but also learn how to integrate them into your daily workflow for maximum efficiency.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw3.webp" alt=""></div><p>Create AI-Powered Writing Assistants</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Build your own AI writing bot trained to sound just like you.</li><li>Use GPT-powered tools to fine-tune AI to replicate your unique tone and writing style.</li><li>Easily write blogs, social posts, emails, or scripts that feel personal and on-brand.</li><li>Learn the future of scalable, authentic content creation.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw4.webp" alt=""></div><p>Automate Workflows with AI and No-Code Platforms</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Learn to build AI-driven automations using no-code platforms like Make.com.</li><li>Automate tasks like posting content on LinkedIn, sending follow-up emails, and updating databases.</li><li>Make AI work in the background so you can focus on big-picture thinking.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw5.webp" alt=""></div><p>Explore Image and Video Generation with AI</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Dive into AI-generated media with tools like MidJourney and Runway ML.</li><li>Create studio-quality images, social media visuals, short videos, and cinematic content with prompts.</li><li>Perfect for marketers, creators, and entrepreneurs seeking to enhance visual storytelling.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw6.webp" alt=""></div><p>Build Digital Products without Code</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>No coding knowledge needed to build and launch products.</li><li>Use no-code platforms like Vibe Coding and AI tools to create apps, landing pages, automations, and digital products.</li><li>Gain the power to turn your ideas into working solutions without a developer.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw7.webp" alt=""></div><p>Use AI for Data Analysis and Decision-Making</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Learn how to clean, analyze, and make sense of raw data with AI.</li><li>Extract insights and create visual dashboards in minutes from sales data, survey results, and business metrics.</li><li>Use AI as your personal data analyst to make faster, smarter decisions.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw8.webp" alt=""></div><p>Content Creation Using GenAI</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Speed up content creation and improve quality with AI.</li><li>Generate scroll-stopping content for LinkedIn, Instagram, emails, and websites quickly.</li><li>Practice writing hooks, headlines, blogs, carousels, and scripts using AI, keeping the human touch intact.</li></ul></div></div></div>
-<div><div class="cur-card" onclick="toggleCur(this)"><div class="cur-icon"><img src="https://ws.growthschool.io/images/growthschool/lw9.webp" alt=""></div><p>Emerging AI Trends</p><svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="cur-detail"><div class="cur-detail-inner"><ul><li>Stay ahead in the rapidly evolving AI world.</li><li>Discover the latest tools, innovations, and business applications you should watch.</li><li>Learn how top professionals use AI for growth, cost-saving, and gaining a competitive edge.</li></ul></div></div></div>
-</div>
-</section>
-
-<!-- ===== BONUSES ===== -->
-<section class="bonus-section">
-<h1>And Also Enjoy <span class="green-grad">Bonuses Worth ₹5000 for FREE!</span></h1>
-<div class="bonus-grid">
-<div class="bonus-card"><div class="b-num">1</div><p>List of Gold-Standard and Hidden Prompts for GPT4</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b1.webp" alt=""></div>
-<div class="bonus-card"><div class="b-num">2</div><p>Copy-Paste Template To Using All in one AI tools like Simplified.com</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b2.webp" alt=""></div>
-<div class="bonus-card"><div class="b-num">3</div><p>Step by Step Method of Coding a Website with 0 prior knowledge in tech</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b3.webp" alt=""></div>
-<div class="bonus-card"><div class="b-num">4</div><p>Creating AI generated personas that provide you support of 10 humans using Synthesia</p><img class="b-img" src="https://ws.growthschool.io/images/growthschool/b4.webp" alt=""></div>
-</div>
-<div style="margin-top:32px"><a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:16px 32px;font-size:1.2rem;font-weight:600;display:inline-block;width:90%;max-width:400px;box-shadow:0 0 15px 10px rgba(78,159,61,.6)">Join Now</a></div>
-</section>
-
-<!-- ===== MENTORS ===== -->
-<section class="mentors-section">
-<h2>Learn from the top 1% in AI</h2>
-<p class="sub">...as They Guide You Through Cutting-Edge Tools—Transforming the Way You Work and Create</p>
-<div class="mentors-grid" style="justify-content:center">
-<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/raghu.jpg" alt="Raghuveer Nishthala"><div class="m-info"><h3>Raghuveer Nishthala</h3><p class="m-role">Brand Marketer</p><img class="m-company" src="https://course.outskill.com/images/ub.webp" alt=""></div></div>
-<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/shant.webp" alt="Shantanu Tungare"><div class="m-info"><h3>Shantanu Tungare</h3><p class="m-role">AI Film Maker - Bulb Chumka</p><img class="m-company" src="https://course.outskill.com/images/bulbm.png" alt="" style="filter:invert(1)"></div></div>
-<div class="mentor-card"><img class="m-img" src="nirmal-mentor.jpg" alt="Nirmal Sistiny"><div class="m-info"><h3>Nirmal Sistiny</h3><p class="m-role">Founder - AI War Room</p><img class="m-company" src="https://course.growthschool.io/images/aigs.png" alt=""></div></div>
-<div class="mentor-card"><img class="m-img" src="https://course.outskill.com/images/dileep.webp" alt="KVS Dileep"><div class="m-info"><h3>KVS Dileep</h3><p class="m-role">Head of AI Initiatives</p><img class="m-company" src="https://course.growthschool.io/images/aigs.png" alt=""></div></div>
-</div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="testimonials-section">
-<p class="label">HEAR IT FROM THEM</p>
-<h2>See what's possible here</h2>
-<div class="test-row" style="justify-content:center">
-<div class="test-card video"><img src="https://go.outskill.com/vm1.png" alt=""><div class="play-btn">▶</div><div class="v-name">Ankur Sarkar</div></div>
-<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>My day doesn't do without thanks to Growth School webinar attendance experience. I express desk gratitude to Mr V. and all experts who have presented the knowledge. I'm already bootstrapped and dived into refining my skills.</p><p class="t-author">Jayaasrinnivas Patri</p></div>
-<div class="test-card video"><img src="https://go.outskill.com/vm2.png" alt=""><div class="play-btn">▶</div><div class="v-name">Parvinder Singh Sarin</div></div>
-<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Thanks again everyone at GS Team and the whole community! You are such examples of commitment, joy, and dedication to help people believe that they can do what they couldn't do before!</p><p class="t-author">Simil Simon</p></div>
-</div>
-<div class="test-row" style="justify-content:center">
-<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Great great great session! Actually enjoyed jumping into the world of AI. It was actually an eye-opening session! It was really a BOOM! Hat's off to Vaibhav &amp; team!</p><p class="t-author">Parmeet Singh Khanuja</p></div>
-<div class="test-card video"><img src="https://go.outskill.com/vm3.png" alt=""><div class="play-btn">▶</div><div class="v-name">Harish Prakash</div></div>
-<div class="test-card text"><img class="li-icon" src="https://go.outskill.com/link.svg" alt="LinkedIn"><p>Massive thanks to Prashanth, Phani, Vaibhav, Manish, PK, and the entire Growth School team for absolutely over-delivering in today's Gen AI Bootcamp session! The insights and value were next-level!</p><p class="t-author">Nikhil Ratakonda</p></div>
-<div class="test-card video"><img src="https://go.outskill.com/vm4.png" alt=""><div class="play-btn">▶</div><div class="v-name">Krishnan Tyer</div></div>
-</div>
-</section>
-
-<!-- ===== WHY ===== -->
-<section class="why-section">
-<h1>Why AI War Room?</h1>
-<p class="why-desc">AI War Room is where you become the <span class="green-grad">Top 1%</span> in your field. We bring the best of Product, Growth, Design, Tech, data and business mentors from brands like <span class="green-grad">Google, Meta, Uber</span> etc doing the jobs you want to do tomorrow.</p>
-<div class="why-stats">
-<div class="why-stat">
-<svg viewBox="0 0 576 512"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6z"/></svg>
-<h2>4.7<span style="font-size:1.2rem">/5</span></h2>
-<p>Trustpilot Rating</p>
-</div>
-<div class="why-stat">
-<svg viewBox="0 0 448 512"><path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"/></svg>
-<h2>10.2M+</h2>
-<p>Global Learners</p>
-</div>
-</div>
-<div class="why-logo"><div class="logo-box"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/mainlogo.png" alt="Logos"></div></div>
-<p class="why-backed">Backed by the best</p>
-<div class="why-people">
-<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w3.webp" alt=""><div class="p-name">Austin Alred</div></div>
-<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w2.webp" alt=""><div class="p-name">Eric Siu</div></div>
-<div class="person"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/w1.webp" alt=""><div class="p-name">Justin Caldbeck</div></div>
-</div>
-</section>
-
-<!-- ===== PRICE CARD ===== -->
-<section class="price-section">
-<h1><span class="green-grad">AI</span> Workshop for Professionals</h1>
-<div class="price-card">
-<img class="p-bg" src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/priceback.webp" alt="">
-<div class="price-card-inner">
-<h2>₹99</h2>
-<p class="p-orig"><span class="strike">₹1,999</span> (Save 95%)</p>
-<p class="p-desc">Register now and get our bestselling workshop at 100% that includes:</p>
-<ul>
-<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹2000 worth of course content on leveraging AI &amp; ChatGPT as a professional</li>
-<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹5000 in bonuses to help you become an AI-powered professional</li>
-<li><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓">₹2300 access pass to a global community of professionals and AI-enthusiasts</li>
+<div class="mt-6"><p class="text-xl text-white">Register now and get our bestselling workshop at 100% that includes:</p></div>
+<ul class="mt-6 space-y-2 px-2">
+<li class="text-white text-xl font-medium flex items-center"><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓" class="w-auto h-3 mr-3 shrink-0"/>₹2000 worth of course content on leveraging AI &amp; ChatGPT as a professional</li>
+<li class="text-white text-xl font-medium flex items-center"><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓" class="w-auto h-3 mr-3 shrink-0"/>₹5000 in bonuses to help you become an AI-powered professional</li>
+<li class="text-white text-xl font-medium flex items-center"><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓" class="w-auto h-3 mr-3 shrink-0"/>₹2300 access pass to a global community of professionals and AI-enthusiasts</li>
 </ul>
-<div class="p-cta"><a href="https://rzp.io/rzp/n4VXqelQ">Join Now</a></div>
+<div class="mt-8 text-center"><a href="https://rzp.io/rzp/n4VXqelQ" class="bg-white w-full py-3 px-6 rounded-3xl text-lg font-medium transition cursor-pointer hover:bg-gray-100 block text-center">Join Now</a></div>
 </div>
 </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="faq-section">
-<div class="faq-wrap">
-<h1>FAQ</h1>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What is this workshop about?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This is a 2-day intensive, hands-on workshop where you'll learn 25+ AI tools including ChatGPT, Claude, Midjourney, and more. You'll leave with practical skills to automate your work, create content faster, and build AI-powered products.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I expect hands-on training?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Yes, the workshop includes hands-on training with practical examples.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Will this be live or pre-recorded?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This is a LIVE interactive experience! You'll be learning in real-time with fellow participants, participating in polls, answering thought-provoking questions, attempting quizzes, and doing many more exciting activities. By the end of the value-packed session, you will have a roadmap to reach your desired outcomes 🚀</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">I have a full time job. Will you share recordings?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>The workshop is Live over the weekend, so your work will not be hampered. But the sessions will not be recorded.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Would there be any certificate on completion?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Yes! You will receive a certificate on completion if you attend the entire live session.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">When can I receive the bonus?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>You will receive all the bonuses within 48 hours once the workshop is done.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What is the timezone?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>It is IST (Indian Standard Time).</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Who should attend this workshop?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>This workshop is designed for professionals of all levels and industries who want to harness the power of AI to enhance their professional skills and success.</p></div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Will I receive a certificate upon completion?<svg viewBox="0 0 24 24"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div><div class="faq-a"><p>Absolutely! You'll get a virtual certificate signed by your mentor, verifying your completion of the course. It's a tangible way to showcase your newly acquired skills and expertise.</p></div></div>
+<!-- FAQ -->
+<div class="relative">
+<section class="md:py-16 py-8 w-full flex justify-center">
+<div class="md:w-[80%] w-full bg-[#F0F0F0] md:p-12 py-8 md:px-3 rounded-3xl">
+<div class="text-center mb-12"><h1 class="text-3xl font-bold">FAQ</h1></div>
+<div class="md:max-w-[80%] w-[90%] mx-auto space-y-6" id="faq">
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">What is this workshop about?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">This is a 2-day intensive, hands-on workshop where you'll learn 25+ AI tools including ChatGPT, Claude, Midjourney, and more. You'll leave with practical skills to automate your work, create content faster, and build AI-powered products.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">Can I expect hands-on training?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">Yes, the workshop includes hands-on training with practical examples.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">Will this be live or pre-recorded?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">This is a LIVE interactive experience! You'll be learning in real-time with fellow participants, participating in polls, answering thought-provoking questions, attempting quizzes, and doing many more exciting activities. By the end of the value-packed session, you will have a roadmap to reach your desired outcomes 🚀</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">I have a full time job. Will you share recordings?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">The workshop is Live over the weekend, so your work will not be hampered. But the sessions will not be recorded.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">Would there be any certificate on completion?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">Yes! You will receive a certificate on completion if you attend the entire live session.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">When can I receive the bonus?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">You will receive all the bonuses within 48 hours once the workshop is done.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">What is the timezone?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">It is IST (Indian Standard Time).</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">Who should attend this workshop?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">This workshop is designed for professionals of all levels and industries who want to harness the power of AI to enhance their professional skills and success.</p></div></div>
+<div class="border border-black md:p-4 p-2 cursor-pointer rounded-xl" onclick="toggleFaq(this)"><div class="flex justify-between items-center"><p class="md:text-xl text-lg font-medium text-gray-900">Will I receive a certificate upon completion?</p><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="w-6 h-6 text-gray-900 shrink-0 transition-transform" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div><div class="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><p class="mt-3 text-gray-600">Absolutely! You'll get a virtual certificate signed by your mentor, verifying your completion of the course. It's a tangible way to showcase your newly acquired skills and expertise.</p></div></div>
+</div>
 </div>
 </section>
 
-<!-- ===== CONVINCE ===== -->
-<div class="convince-section">
-<h1>Still not convinced?</h1>
-<p>Check our reviews, check our LinkedIn, check our social proof. We're sure you'll have no problem getting value from this workshop 😁</p>
-<a href="https://rzp.io/rzp/n4VXqelQ">Join Now</a>
+<!-- STILL NOT CONVINCED -->
+<div class="md:w-[80%] w-full mx-auto bg-[#1e5128] p-6 rounded-3xl relative z-10 md:mt-[-100px] mt-[-40px] overflow-hidden">
+<div class="md:text-center mt-20">
+<h1 class="text-4xl font-bold mb-14 text-white">Still not convinced?</h1>
+<div class="text-lg mb-6 text-white"><p class="mb-2">Check our reviews, check our LinkedIn, check our social proof. We're sure you'll have no problem getting value from this workshop 😁</p></div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="bg-white py-3 px-6 rounded-3xl text-lg font-medium transition md:w-[40%] w-full md:mt-14 mt-6 mb-6 z-20 relative cursor-pointer hover:bg-gray-100 inline-block text-center">Join Now</a>
+</div>
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Group.png" alt="" class="absolute bottom-0 left-0 w-full h-auto object-cover z-[-1] pointer-events-none"/>
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Ellipse%206.png" alt="" class="absolute right-0 w-[60%] bottom-0 object-cover z-[-1] rounded-3xl pointer-events-none"/>
+<img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Ellipse%205.png" alt="" class="absolute top-0 right-0 w-full h-auto object-cover z-[-1] pointer-events-none"/>
+</div>
 </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-<img src="https://course.growthschool.io/images/newgsblack.svg" alt="Logo">
-<a href="#">Privacy Policy</a>
-<a href="#">Refund Policy</a>
-<div class="addr">AI War Room by Nirmal Sistiny<br>© 2026 All rights reserved.</div>
+<!-- FOOTER -->
+<footer class="py-8 mt-5 mb-14 md:mb-20">
+<div class="container mx-auto text-center">
+<img src="https://course.growthschool.io/images/newgsblack.svg" alt="Logo" class="mx-auto mb-4 h-[48px] w-[300px]"/>
+<a href="#" class="text-gray-700 mb-2 font-medium block hover:text-gray-900 transition">Privacy Policy</a>
+<a href="#" class="text-gray-700 font-medium block hover:text-gray-900 transition">Refund Policy</a>
+<div class="text-gray-700 font-medium mt-8 p-3">AI War Room by Nirmal Sistiny<br/>© 2026 All rights reserved.</div>
+</div>
 </footer>
 
-<!-- ===== STICKY BAR ===== -->
-<div class="sticky-bar">
-<div>
-<div class="s-price">₹99 <span class="strike">₹1,999</span> <span class="off">95% OFF</span></div>
-<div class="s-deadline">Deadline 22 February 2026</div>
+<!-- STICKY BAR -->
+<div class="fixed bottom-0 left-0 right-0 bg-[#D8E9A8B2] backdrop-blur-md shadow-lg px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 flex items-center justify-between z-10">
+<div class="flex flex-col gap-1">
+<p class="text-2xl sm:text-2xl md:text-4xl font-medium">₹99 <span class="line-through text-lg sm:text-base md:text-xl">₹1,999</span> <span class="text-sm sm:text-base md:text-xl">95% OFF</span></p>
+<p class="text-lg sm:text-base md:text-xl">Deadline 22 February 2026</p>
 </div>
-<a href="https://rzp.io/rzp/n4VXqelQ" class="btn-green" style="border-radius:50px;padding:10px 32px;font-size:1rem;font-weight:600">Join Now</a>
+<div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="text-white text-sm sm:text-base md:text-xl font-semibold sm:px-6 px-8 py-2 sm:py-3 md:py-4 rounded-full w-full sm:w-auto md:w-96 z-10 cursor-pointer hover:opacity-90 transition inline-block text-center" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Join Now</a>
+</div>
+</div>
+
 </div>
 
 <script>
-function toggleCur(el){
-var d=el.nextElementSibling;
-d.classList.toggle('open');
-}
-function toggleFaq(el){
-var q=el.querySelector('.faq-q');
-var a=el.querySelector('.faq-a');
-q.classList.toggle('open');
-a.classList.toggle('open');
-}
+function toggleCur(el){var d=el.parentElement.querySelector('.cur-detail');if(d.style.maxHeight&&d.style.maxHeight!=='0px'){d.style.maxHeight='0px';d.style.opacity='0'}else{d.style.maxHeight=d.scrollHeight+'px';d.style.opacity='1'}}
+function toggleFaq(el){var a=el.querySelector('div:last-child');var svg=el.querySelector('svg');if(a.style.maxHeight&&a.style.maxHeight!=='0px'){a.style.maxHeight='0px';svg.style.transform='rotate(0deg)'}else{a.style.maxHeight=a.scrollHeight+'px';svg.style.transform='rotate(180deg)'}}
+var sliderPos=1;function moveSlider(dir){sliderPos+=dir;if(sliderPos<0)sliderPos=4;if(sliderPos>4)sliderPos=0;document.getElementById('slider').style.transform='translateX(-'+(sliderPos*33.333)+'%)'}
 </script>
 </body>
 </html>
