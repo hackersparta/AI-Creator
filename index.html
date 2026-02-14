@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI War Room — Master 25+ AI Tools in One Weekend</title>
+<meta name="description" content="Join the AI War Room: A 2-day hands-on AI workshop. Learn ChatGPT, 25+ AI tools, automation, and more. Only ₹99. Limited seats!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
+--accent:#00d4ff;--accent2:#7c3aed;--accent-glow:rgba(0,212,255,0.3);
+--text:#e8e8f0;--text-muted:#9393a8;--text-dim:#6b6b80;
+--success:#10b981;--warning:#f59e0b;--danger:#ef4444;
+--card:#16162a;--border:#2a2a40;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+
+/* Utility */
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.section{padding:80px 0}
+.section-title{font-size:2rem;font-weight:800;text-align:center;margin-bottom:16px;line-height:1.2}
+.section-subtitle{text-align:center;color:var(--text-muted);font-size:1.05rem;max-width:600px;margin:0 auto 48px}
+.highlight{color:var(--accent)}
+.highlight2{color:var(--accent2)}
+.badge{display:inline-block;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--accent);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+
+/* CTA Button */
+.cta-btn{
+display:inline-flex;align-items:center;justify-content:center;gap:8px;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:#fff;font-size:1.1rem;font-weight:700;
+padding:16px 40px;border-radius:12px;border:none;cursor:pointer;
+transition:all 0.3s;text-decoration:none;
+box-shadow:0 4px 24px rgba(0,212,255,0.3);
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,255,0.4)}
+.cta-btn-sm{padding:12px 28px;font-size:1rem}
+
+/* ========== HERO ========== */
+.hero{
+padding:100px 0 80px;
+background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.08) 0%,transparent 60%),
+radial-gradient(ellipse at 80% 50%,rgba(124,58,237,0.06) 0%,transparent 50%),
+var(--bg);
+text-align:center;position:relative;
+}
+.hero-badge{margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:1.15rem;color:var(--text-muted);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* Date/Time pills */
+.date-pills{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.date-pill{
+background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 24px;min-width:200px;
+}
+.date-pill .day{font-size:0.8rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.date-pill .date{font-weight:700;font-size:1rem}
+.date-pill .time{color:var(--text-muted);font-size:0.85rem;margin-top:2px}
+
+/* Price */
+.price-block{margin:32px 0}
+.price-old{font-size:1.3rem;color:var(--text-dim);text-decoration:line-through;margin-right:8px}
+.price-new{font-size:2.5rem;font-weight:900;color:var(--accent)}
+.price-off{display:inline-block;background:var(--danger);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.8rem;font-weight:700;margin-left:12px;vertical-align:middle}
+
+/* Countdown */
+.countdown{display:flex;gap:12px;justify-content:center;margin:24px 0 8px}
+.countdown-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;min-width:70px;text-align:center}
+.countdown-item .num{font-size:1.8rem;font-weight:800;color:var(--accent);display:block}
+.countdown-item .label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.countdown-text{color:var(--text-muted);font-size:0.85rem;margin-bottom:16px}
+
+/* Ratings */
+.ratings{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.rating-card{display:flex;align-items:center;gap:8px;background:var(--bg2);padding:10px 20px;border-radius:10px;border:1px solid var(--border)}
+.rating-card .stars{color:var(--warning);font-size:1rem}
+.rating-card .score{font-weight:700;font-size:0.95rem}
+.rating-card .source{color:var(--text-muted);font-size:0.8rem}
+
+/* ========== LEARNINGS ========== */
+.learn-section{background:var(--bg2)}
+.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.learn-card{
+background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;
+transition:all 0.3s;position:relative;overflow:hidden;
+}
+.learn-card:hover{border-color:rgba(0,212,255,0.4);transform:translateY(-2px)}
+.learn-card .num{
+position:absolute;top:16px;right:20px;font-size:2.5rem;font-weight:900;
+color:rgba(0,212,255,0.08);line-height:1;
+}
+.learn-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;padding-right:40px}
+.learn-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.5}
+.learn-card .icon{font-size:1.5rem;margin-bottom:12px;display:block}
+
+/* ========== BONUSES ========== */
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.bonus-card{
+background:linear-gradient(135deg,rgba(0,212,255,0.05),rgba(124,58,237,0.05));
+border:1px solid var(--border);border-radius:14px;padding:28px;text-align:center;
+transition:all 0.3s;
+}
+.bonus-card:hover{border-color:rgba(124,58,237,0.4);transform:translateY(-2px)}
+.bonus-card .bonus-num{
+display:inline-flex;align-items:center;justify-content:center;
+width:40px;height:40px;border-radius:50%;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+color:#fff;font-weight:800;font-size:1rem;margin-bottom:16px;
+}
+.bonus-card h3{font-size:0.95rem;font-weight:700;margin-bottom:8px}
+.bonus-card p{font-size:0.82rem;color:var(--text-muted)}
+
+/* ========== MENTOR ========== */
+.mentor-section{background:var(--bg2)}
+.mentor-wrap{display:flex;align-items:center;gap:48px;flex-wrap:wrap;justify-content:center}
+.mentor-img{
+width:280px;height:280px;border-radius:50%;object-fit:cover;
+border:4px solid var(--accent);
+box-shadow:0 0 40px rgba(0,212,255,0.2);
+}
+.mentor-info{flex:1;min-width:280px}
+.mentor-info h3{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.mentor-info .role{color:var(--accent);font-weight:600;font-size:0.95rem;margin-bottom:16px}
+.mentor-info p{color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;line-height:1.7}
+.mentor-stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.mentor-stat{text-align:center}
+.mentor-stat .val{font-size:1.5rem;font-weight:800;color:var(--accent);display:block}
+.mentor-stat .lbl{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+
+/* ========== TESTIMONIALS ========== */
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.testimonial-card{
+background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;
+transition:all 0.3s;
+}
+.testimonial-card:hover{border-color:rgba(0,212,255,0.3)}
+.testimonial-card .quote{font-size:0.92rem;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
+.testimonial-card .quote::before{content:'"';font-size:2rem;color:var(--accent);line-height:0;vertical-align:-0.5em;margin-right:4px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.9rem}
+.testimonial-name{font-weight:700;font-size:0.9rem}
+.testimonial-role{font-size:0.78rem;color:var(--text-muted)}
+
+/* ========== WHY US ========== */
+.why-section{background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center}
+.why-card .why-num{font-size:2.2rem;font-weight:900;color:var(--accent);display:block;margin-bottom:4px}
+.why-card .why-label{color:var(--text-muted);font-size:0.9rem}
+
+/* ========== FAQ ========== */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{
+font-weight:700;font-size:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+transition:color 0.2s;
+}
+.faq-q:hover{color:var(--accent)}
+.faq-q .arrow{transition:transform 0.3s;font-size:1.2rem;color:var(--text-muted)}
+.faq-q.open .arrow{transform:rotate(180deg)}
+.faq-a{
+max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;
+color:var(--text-muted);font-size:0.9rem;line-height:1.7;
+}
+.faq-a.open{max-height:500px;padding-top:12px}
+
+/* ========== FINAL CTA ========== */
+.final-cta{
+background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(124,58,237,0.08));
+text-align:center;padding:80px 20px;
+}
+.final-cta h2{font-size:2rem;font-weight:900;margin-bottom:16px}
+.final-cta p{color:var(--text-muted);margin-bottom:32px;font-size:1.05rem}
+
+/* ========== STICKY BAR ========== */
+.sticky-bar{
+position:fixed;bottom:0;left:0;right:0;
+background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);
+border-top:1px solid var(--border);
+padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:16px;
+z-index:1000;transform:translateY(100%);transition:transform 0.3s;
+}
+.sticky-bar.visible{transform:translateY(0)}
+.sticky-bar .price-info{font-size:0.9rem}
+.sticky-bar .price-info .old{text-decoration:line-through;color:var(--text-dim);margin-right:6px}
+.sticky-bar .price-info .new{font-weight:800;color:var(--accent);font-size:1.1rem}
+
+/* ========== FOOTER ========== */
+.footer{text-align:center;padding:40px 20px;color:var(--text-dim);font-size:0.82rem;border-top:1px solid var(--border)}
+
+/* ========== ANIMATIONS ========== */
+.fade-up{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+.hero{padding:80px 0 60px}
+.hero h1{font-size:1.8rem}
+.section{padding:60px 0}
+.section-title{font-size:1.5rem}
+.date-pills{flex-direction:column;align-items:center}
+.mentor-wrap{flex-direction:column;text-align:center}
+.mentor-img{width:200px;height:200px}
+.mentor-stats{justify-content:center}
+.countdown-item{min-width:60px;padding:10px 12px}
+.countdown-item .num{font-size:1.4rem}
+.learn-grid,.bonus-grid,.testimonial-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+<div class="container">
+<div class="hero-badge"><span class="badge">🔥 Limited Seats — Filling Fast!</span></div>
+<h1>Master <span class="highlight">25+ AI Tools</span> in One Weekend & Become <span class="highlight2">Irreplaceable</span></h1>
+<p class="hero-sub">This hands-on AI workshop transforms you into an AI power user — build automated workflows, create professional content in minutes, and launch AI-powered apps.</p>
+
+<div class="date-pills">
+<div class="date-pill">
+<div class="day">Saturday</div>
+<div class="date">22nd February 2026</div>
+<div class="time">10 AM — 7 PM IST</div>
+</div>
+<div class="date-pill">
+<div class="day">Sunday</div>
+<div class="date">23rd February 2026</div>
+<div class="time">10 AM — 7 PM IST</div>
+</div>
+</div>
+
+<div class="price-block">
+<span class="price-old">₹1,999</span>
+<span class="price-new">₹99</span>
+<span class="price-off">95% OFF</span>
+</div>
+
+<p class="countdown-text">⏳ Offer ends in:</p>
+<div class="countdown" id="countdown">
+<div class="countdown-item"><span class="num" id="cd-days">00</span><span class="label">Days</span></div>
+<div class="countdown-item"><span class="num" id="cd-hours">00</span><span class="label">Hours</span></div>
+<div class="countdown-item"><span class="num" id="cd-mins">00</span><span class="label">Mins</span></div>
+<div class="countdown-item"><span class="num" id="cd-secs">00</span><span class="label">Secs</span></div>
+</div>
+
+<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn" id="hero-cta">⚡ Register Now — ₹99 Only</a>
+
+<div class="ratings">
+<div class="rating-card">
+<span class="stars">★★★★★</span>
+<span class="score">4.8/5</span>
+<span class="source">Student Rating</span>
+</div>
+<div class="rating-card">
+<span class="stars">★★★★★</span>
+<span class="score">4.6/5</span>
+<span class="source">Google Reviews</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== WHAT YOU'LL LEARN ========== -->
+<section class="section learn-section" id="learn">
+<div class="container">
+<h2 class="section-title fade-up">Here's What You'll Learn in the <span class="highlight">2-Day AI Mastermind</span></h2>
+<p class="section-subtitle fade-up">From zero to AI power user — everything you need to 10x your productivity</p>
+
+<div class="learn-grid">
+<div class="learn-card fade-up">
+<span class="num">01</span>
+<span class="icon">🧠</span>
+<h3>Understanding Generative AI & Prompt Engineering</h3>
+<p>Master the art of communicating with AI. Learn prompt frameworks that get 10x better outputs every time.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">02</span>
+<span class="icon">💬</span>
+<h3>ChatGPT and 20+ AI Tools</h3>
+<p>Deep dive into ChatGPT, Claude, Gemini, Perplexity and 20+ tools that will transform how you work.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">03</span>
+<span class="icon">✍️</span>
+<h3>Create AI-Powered Writing Assistants</h3>
+<p>Build custom writing workflows that produce blog posts, emails, and copy in minutes — not hours.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">04</span>
+<span class="icon">⚙️</span>
+<h3>Automate Workflows with AI & No-Code</h3>
+<p>Connect AI tools with Zapier, Make, and no-code platforms to automate repetitive tasks forever.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">05</span>
+<span class="icon">🎨</span>
+<h3>Image & Video Generation with AI</h3>
+<p>Create stunning visuals with Midjourney, DALL-E, Runway — no design skills needed.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">06</span>
+<span class="icon">🚀</span>
+<h3>Build Digital Products Without Code</h3>
+<p>Launch websites, apps, and digital products using AI — even if you've never written a line of code.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">07</span>
+<span class="icon">📊</span>
+<h3>AI for Data Analysis & Decision-Making</h3>
+<p>Use AI to analyze data, create reports, and make smarter business decisions instantly.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">08</span>
+<span class="icon">🎬</span>
+<h3>Content Creation Using GenAI</h3>
+<p>Create social media content, YouTube scripts, newsletters, and presentations 10x faster.</p>
+</div>
+<div class="learn-card fade-up">
+<span class="num">09</span>
+<span class="icon">🔮</span>
+<h3>Emerging AI Trends & What's Next</h3>
+<p>Stay ahead of the curve. Learn about AI agents, multimodal AI, and the future of work.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== BONUSES ========== -->
+<section class="section" id="bonuses">
+<div class="container">
+<h2 class="section-title fade-up">And Also Enjoy Bonuses Worth <span class="highlight">₹5,000</span> for FREE!</h2>
+<p class="section-subtitle fade-up">Because showing up should be rewarded</p>
+
+<div class="bonus-grid">
+<div class="bonus-card fade-up">
+<div class="bonus-num">1</div>
+<h3>Gold-Standard Prompts for GPT-4</h3>
+<p>Curated list of high-performance prompts that unlock ChatGPT's full potential. Copy, paste, profit.</p>
+</div>
+<div class="bonus-card fade-up">
+<div class="bonus-num">2</div>
+<h3>All-in-One AI Tools Templates</h3>
+<p>Ready-to-use templates for the top AI tools. Skip the learning curve, start producing immediately.</p>
+</div>
+<div class="bonus-card fade-up">
+<div class="bonus-num">3</div>
+<h3>Build a Website with Zero Coding</h3>
+<p>Step-by-step method to code and deploy a professional website using only AI. No tech background needed.</p>
+</div>
+<div class="bonus-card fade-up">
+<div class="bonus-num">4</div>
+<h3>AI-Generated Personas with Synthesia</h3>
+<p>Create AI avatars that provide the support of 10 humans. Perfect for content, support, and presentations.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== MENTOR ========== -->
+<section class="section mentor-section" id="mentor">
+<div class="container">
+<h2 class="section-title fade-up">Learn from the <span class="highlight">Best in AI</span></h2>
+<p class="section-subtitle fade-up">Your guide through the AI revolution</p>
+
+<div class="mentor-wrap fade-up">
+<img src="nirmal.jpg" alt="Nirmal Sistiny" class="mentor-img" loading="lazy">
+<div class="mentor-info">
+<h3>Nirmal Sistiny</h3>
+<p class="role">AI & Fintech Specialist | 10+ Years in Tech</p>
+<p>With over a decade of experience building cutting-edge fintech products and a deep expertise in AI, Nirmal has helped professionals and businesses harness the power of artificial intelligence to transform their workflows.</p>
+<p>He believes AI isn't just for engineers — it's for everyone who wants to stay relevant and thrive in the new economy. This workshop is his mission to democratize AI knowledge.</p>
+<div class="mentor-stats">
+<div class="mentor-stat"><span class="val">10+</span><span class="lbl">Years Experience</span></div>
+<div class="mentor-stat"><span class="val">25+</span><span class="lbl">AI Tools Covered</span></div>
+<div class="mentor-stat"><span class="val">500+</span><span class="lbl">Professionals Trained</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="section" id="testimonials">
+<div class="container">
+<h2 class="section-title fade-up">Hear It From <span class="highlight">Our Learners</span></h2>
+<p class="section-subtitle fade-up">Real results from real professionals</p>
+
+<div class="testimonial-grid">
+<div class="testimonial-card fade-up">
+<p class="quote">This workshop completely changed how I work. I'm saving 3-4 hours daily using the AI tools I learned here. The prompt engineering section alone was worth 100x the price.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">P</div>
+<div><div class="testimonial-name">Priya S.</div><div class="testimonial-role">Marketing Manager, Bangalore</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-up">
+<p class="quote">I went from knowing nothing about AI to automating half my tasks at work. My manager noticed the productivity boost within a week. Best ₹99 I've ever spent.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">R</div>
+<div><div class="testimonial-name">Rahul M.</div><div class="testimonial-role">Software Engineer, Pune</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-up">
+<p class="quote">As a freelancer, AI tools have 10x'd my output. I'm taking on more clients and delivering faster. Nirmal's teaching style makes complex tools feel effortless.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">A</div>
+<div><div class="testimonial-name">Anita K.</div><div class="testimonial-role">Freelance Designer, Mumbai</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-up">
+<p class="quote">I was skeptical about a ₹99 workshop but this delivered more value than courses I've paid ₹10,000+ for. The hands-on approach is what makes the difference.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">V</div>
+<div><div class="testimonial-name">Vikram T.</div><div class="testimonial-role">Business Analyst, Delhi</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-up">
+<p class="quote">Built my first AI-powered app during the workshop itself — with zero coding experience! The energy in the room was incredible. Highly recommend.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">S</div>
+<div><div class="testimonial-name">Sneha R.</div><div class="testimonial-role">HR Professional, Chennai</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-up">
+<p class="quote">Finally someone who teaches AI tools practically, not just theory. I've already automated my email responses and content calendar. Game changer!</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">D</div>
+<div><div class="testimonial-name">Deepak J.</div><div class="testimonial-role">Content Creator, Hyderabad</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== WHY AI WAR ROOM ========== -->
+<section class="section why-section" id="why">
+<div class="container">
+<h2 class="section-title fade-up">Why <span class="highlight">AI War Room</span>?</h2>
+<p class="section-subtitle fade-up">We don't just teach AI — we make you dangerous with it</p>
+
+<div class="why-grid fade-up">
+<div class="why-card"><span class="why-num">25+</span><span class="why-label">AI Tools Covered</span></div>
+<div class="why-card"><span class="why-num">18</span><span class="why-label">Hours of Learning</span></div>
+<div class="why-card"><span class="why-num">100%</span><span class="why-label">Hands-On Training</span></div>
+<div class="why-card"><span class="why-num">₹5K+</span><span class="why-label">Free Bonuses</span></div>
+</div>
+</div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section" id="faq">
+<div class="container">
+<h2 class="section-title fade-up">Frequently Asked <span class="highlight">Questions</span></h2>
+<p class="section-subtitle fade-up">Got doubts? We've got answers.</p>
+
+<div class="faq-list fade-up">
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">What is this workshop about? <span class="arrow">▼</span></div>
+<div class="faq-a">AI War Room is a 2-day intensive, hands-on workshop where you'll learn 25+ AI tools including ChatGPT, Claude, Midjourney, and more. You'll leave with practical skills to automate your work, create content faster, and build AI-powered products.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Is this suitable for beginners? <span class="arrow">▼</span></div>
+<div class="faq-a">Absolutely! This workshop is designed for all levels. Whether you've never used ChatGPT or you're already familiar with AI, you'll learn practical techniques that will level up your skills significantly.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Will this be live or pre-recorded? <span class="arrow">▼</span></div>
+<div class="faq-a">This is a LIVE interactive session! You'll be learning in real-time with fellow participants, participating in exercises, and getting your questions answered on the spot. This is not a passive lecture — it's a war room.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">I have a full-time job. Can I manage? <span class="arrow">▼</span></div>
+<div class="faq-a">Yes! The workshop is on Saturday & Sunday (10 AM - 7 PM IST), so your work won't be affected. We specifically chose weekends so working professionals can attend without taking leave.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Will I receive a certificate? <span class="arrow">▼</span></div>
+<div class="faq-a">Yes! You'll receive a certificate of completion signed by the mentor after attending the full workshop. It's a great way to showcase your AI skills on LinkedIn.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Will recordings be available? <span class="arrow">▼</span></div>
+<div class="faq-a">The sessions will not be recorded as this is a live, interactive experience. We highly recommend attending both days live to get the full value of the workshop.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">When will I receive the bonuses? <span class="arrow">▼</span></div>
+<div class="faq-a">All bonuses will be shared within 48 hours of the workshop completion. You'll receive them via email.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">Why is it only ₹99? What's the catch? <span class="arrow">▼</span></div>
+<div class="faq-a">No catch. We believe everyone should have access to AI education. The ₹99 price is our way of making this accessible while ensuring committed participants. The real value of this workshop is ₹1,999+ — and you'll feel that from the very first session.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">I made payment but didn't receive confirmation. <span class="arrow">▼</span></div>
+<div class="faq-a">Don't worry! Please reach out to us and our support team will get back to you within 6 hours with your confirmation and access details.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta" id="register">
+<div class="container">
+<h2 class="fade-up">Ready to Join the <span class="highlight">AI War Room</span>?</h2>
+<p class="fade-up">22-23 Feb | Weekend | 10 AM - 7 PM IST | Only ₹99</p>
+<div class="price-block fade-up">
+<span class="price-old">₹1,999</span>
+<span class="price-new">₹99</span>
+<span class="price-off">95% OFF</span>
+</div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn fade-up">⚡ Register Now — Limited Seats!</a>
+</div>
+</section>
+
+<!-- ========== STICKY BAR ========== -->
+<div class="sticky-bar" id="stickyBar">
+<div class="price-info">
+<span class="old">₹1,999</span>
+<span class="new">₹99</span>
+</div>
+<a href="https://rzp.io/rzp/n4VXqelQ" class="cta-btn cta-btn-sm">Register Now ⚡</a>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+<p>© 2026 AI War Room by Nirmal Sistiny. All rights reserved.</p>
+</footer>
+
+<script>
+// ===== COUNTDOWN TIMER =====
+function updateCountdown(){
+const target=new Date('2026-02-22T04:30:00Z').getTime(); // 10 AM IST = 4:30 UTC
+const now=Date.now();
+const diff=target-now;
+if(diff<=0){
+document.getElementById('cd-days').textContent='00';
+document.getElementById('cd-hours').textContent='00';
+document.getElementById('cd-mins').textContent='00';
+document.getElementById('cd-secs').textContent='00';
+return;
+}
+const d=Math.floor(diff/(1000*60*60*24));
+const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const m=Math.floor((diff%(1000*60*60))/(1000*60));
+const s=Math.floor((diff%(1000*60))/1000);
+document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// ===== STICKY BAR =====
+const stickyBar=document.getElementById('stickyBar');
+const heroCta=document.getElementById('hero-cta');
+function checkSticky(){
+const rect=heroCta.getBoundingClientRect();
+if(rect.bottom<0){
+stickyBar.classList.add('visible');
+}else{
+stickyBar.classList.remove('visible');
+}
+}
+window.addEventListener('scroll',checkSticky,{passive:true});
+
+// ===== FAQ TOGGLE =====
+function toggleFaq(el){
+const answer=el.nextElementSibling;
+const isOpen=answer.classList.contains('open');
+// Close all
+document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));
+if(!isOpen){
+answer.classList.add('open');
+el.classList.add('open');
+}
+}
+
+// ===== SCROLL ANIMATIONS =====
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('visible');
+}
+});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
