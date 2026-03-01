@@ -46,6 +46,15 @@ body{font-family:'IBM Plex Sans',sans-serif}
 .animate-marquee-right{animation:marqueeRight 30s linear infinite}
 .scrollbar-hide::-webkit-scrollbar{display:none}
 .scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+.lead-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center}
+.lead-overlay.active{display:flex}
+.lead-box{background:#fff;border-radius:16px;padding:32px;max-width:420px;width:90%;position:relative;box-shadow:0 25px 50px rgba(0,0,0,0.25)}
+.lead-box input{width:100%;padding:12px 16px;border:1.5px solid #d1d5db;border-radius:8px;font-size:16px;margin-bottom:12px;outline:none;transition:border 0.2s}
+.lead-box input:focus{border-color:#4E9F3D}
+.lead-box .lead-btn{width:100%;padding:14px;border:none;border-radius:50px;color:#fff;font-size:18px;font-weight:600;cursor:pointer;background:linear-gradient(128deg,#4e9f3d,#afc570);box-shadow:0 0 15px 5px rgba(78,159,61,0.4);transition:all 0.2s}
+.lead-box .lead-btn:hover{box-shadow:0 0 20px 10px rgba(78,159,61,0.5)}
+.lead-box .lead-btn:disabled{opacity:0.6;cursor:not-allowed}
+.lead-close{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#666;background:none;border:none;line-height:1}
 </style>
 </head>
 <body class="antialiased bg-white">
@@ -76,11 +85,11 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <p class="text-lg md:text-xl text-center relative z-10 md:w-[50%] w-full">This hands-on <span class="text-[#4E9F3D] font-semibold">AI workshop</span> transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
 <div class="flex flex-col justify-center gap-3 md:gap-5 mb-10 mt-6 relative z-10 items-center">
 <div class="flex items-center justify-center gap-4">
-<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">22nd Feb Saturday</p></div>
+<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">8th Mar Saturday</p></div>
 <div class="flex items-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><p class="text-base">10 AM to 7 PM IST</p></div>
 </div>
 <div class="flex items-center justify-center gap-4">
-<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">23rd Feb Sunday</p></div>
+<div class="flex items-center justify-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M960 95.888l-256.224.001V32.113c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76h-256v-63.76c0-17.68-14.32-32-32-32s-32 14.32-32 32v63.76H64c-35.344 0-64 28.656-64 64v800c0 35.343 28.656 64 64 64h896c35.344 0 64-28.657 64-64v-800c0-35.329-28.656-63.985-64-63.985z"></path></svg><p class="text-base">9th Mar Sunday</p></div>
 <div class="flex items-center bg-black text-white md:px-3 px-2 py-1 rounded"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><p class="text-base">10 AM to 7 PM IST</p></div>
 </div>
 </div>
@@ -90,7 +99,7 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="text-white h-10 w-10" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
 </button>
 </div>
-<a href="https://rzp.io/rzp/pKctISH" target="_blank" class="mt-4 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 relative z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer hover:shadow-[0_0_20px_15px_rgba(78,159,61,0.7)] transition-shadow text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
+<a href="#" onclick="openLeadModal(event)" class="mt-4 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 relative z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer hover:shadow-[0_0_20px_15px_rgba(78,159,61,0.7)] transition-shadow text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
 </div>
 
 <!-- RATED -->
@@ -228,7 +237,7 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b3.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">3</div><p class="text-lg relative z-10">Step by Step Method of Coding a Website with 0 prior knowledge in tech</p></div>
 <div class="relative flex items-center justify-start text-white rounded-lg py-6 px-10 shadow-lg h-36 overflow-hidden" style="background:linear-gradient(149.11deg, #1E5128 -16.9%, #4E9F3D 129.3%)"><img src="https://ws.growthschool.io/images/growthschool/b4.webp" alt="" class="absolute right-0 top-1/2 transform -translate-y-1/2 h-full w-auto object-contain"/><div class="text-4xl font-bold mr-4 shrink-0">4</div><p class="text-lg relative z-10">Creating AI generated personas that provide you support of 10 humans using Synthesia</p></div>
 </div>
-<a href="https://rzp.io/rzp/pKctISH" target="_blank" class="mt-10 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
+<a href="#" onclick="openLeadModal(event)" class="mt-10 text-white text-xl font-semibold px-8 py-4 rounded-full w-[90%] md:w-96 z-10 shadow-[0_0_15px_10px_rgba(78,159,61,0.6)] cursor-pointer text-center block" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
 </div>
 
 <!-- MENTORS -->
@@ -332,7 +341,7 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <li class="text-white text-xl font-medium flex items-center"><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓" class="w-auto h-3 mr-3 shrink-0"/>₹5000 in bonuses to help you become an AI-powered professional</li>
 <li class="text-white text-xl font-medium flex items-center"><img src="https://ws.growthschool.io/images/growthschool/tick.png" alt="✓" class="w-auto h-3 mr-3 shrink-0"/>₹2300 access pass to a global community of professionals and AI-enthusiasts</li>
 </ul>
-<div class="mt-8 text-center"><a href="https://rzp.io/rzp/pKctISH" target="_blank" class="bg-white w-full py-3 px-6 rounded-3xl text-lg font-medium transition cursor-pointer hover:bg-gray-100 block text-center">Claim Your Seat for ₹199</a></div>
+<div class="mt-8 text-center"><a href="#" onclick="openLeadModal(event)" class="bg-white w-full py-3 px-6 rounded-3xl text-lg font-medium transition cursor-pointer hover:bg-gray-100 block text-center">Claim Your Seat for ₹199</a></div>
 </div>
 </div>
 </section>
@@ -361,7 +370,7 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <div class="md:text-center mt-20">
 <h1 class="text-4xl font-bold mb-14 text-white">Still not convinced?</h1>
 <div class="text-lg mb-6 text-white"><p class="mb-2">Check our reviews, check our LinkedIn, check our social proof. We're sure you'll have no problem getting value from this workshop 😁</p></div>
-<a href="https://rzp.io/rzp/pKctISH" target="_blank" class="bg-white py-3 px-6 rounded-3xl text-lg font-medium transition md:w-[40%] w-full md:mt-14 mt-6 mb-6 z-20 relative cursor-pointer hover:bg-gray-100 inline-block text-center">Claim Your Seat for ₹199</a>
+<a href="#" onclick="openLeadModal(event)" class="bg-white py-3 px-6 rounded-3xl text-lg font-medium transition md:w-[40%] w-full md:mt-14 mt-6 mb-6 z-20 relative cursor-pointer hover:bg-gray-100 inline-block text-center">Claim Your Seat for ₹199</a>
 </div>
 <img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Group.png" alt="" class="absolute bottom-0 left-0 w-full h-auto object-cover z-[-1] pointer-events-none"/>
 <img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/Ellipse%206.png" alt="" class="absolute right-0 w-[60%] bottom-0 object-cover z-[-1] rounded-3xl pointer-events-none"/>
@@ -383,14 +392,53 @@ body{font-family:'IBM Plex Sans',sans-serif}
 <div class="fixed bottom-0 left-0 right-0 bg-[#D8E9A8B2] backdrop-blur-md shadow-lg px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 flex items-center justify-between z-10">
 <div class="flex flex-col gap-1">
 <p class="text-2xl sm:text-2xl md:text-4xl font-medium">₹199 <span class="line-through text-lg sm:text-base md:text-xl">₹1,999</span> <span class="text-sm sm:text-base md:text-xl">90% OFF</span></p>
-<p class="text-lg sm:text-base md:text-xl">Deadline 22 February 2026</p>
+<p class="text-lg sm:text-base md:text-xl">Deadline 8 March 2026</p>
 </div>
 <div>
-<a href="https://rzp.io/rzp/pKctISH" target="_blank" class="text-white text-sm sm:text-base md:text-xl font-semibold sm:px-6 px-8 py-2 sm:py-3 md:py-4 rounded-full w-full sm:w-auto md:w-96 z-10 cursor-pointer hover:opacity-90 transition inline-block text-center" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
+<a href="#" onclick="openLeadModal(event)" class="text-white text-sm sm:text-base md:text-xl font-semibold sm:px-6 px-8 py-2 sm:py-3 md:py-4 rounded-full w-full sm:w-auto md:w-96 z-10 cursor-pointer hover:opacity-90 transition inline-block text-center" style="background:linear-gradient(128deg, #4e9f3d, #afc570)">Claim Your Seat for ₹199</a>
 </div>
 </div>
 
 </div>
+
+<!-- LEAD CAPTURE MODAL -->
+<div class="lead-overlay" id="leadModal">
+<div class="lead-box">
+<button class="lead-close" onclick="document.getElementById('leadModal').classList.remove('active')">&times;</button>
+<div style="text-align:center;margin-bottom:20px">
+<h2 style="font-size:24px;font-weight:700;margin-bottom:4px">Reserve Your Seat 🎯</h2>
+<p style="color:#666;font-size:14px">Fill in your details and proceed to payment</p>
+</div>
+<form id="leadForm" onsubmit="return handleLeadSubmit(event)">
+<input type="text" id="leadName" placeholder="Full Name" required/>
+<input type="email" id="leadEmail" placeholder="Email Address" required/>
+<input type="tel" id="leadPhone" placeholder="WhatsApp Number" pattern="[0-9]{10}" title="Enter 10-digit mobile number" required/>
+<button type="submit" class="lead-btn" id="leadBtn">Claim Your Seat for ₹199 →</button>
+</form>
+<p style="text-align:center;margin-top:12px;font-size:12px;color:#999">🔒 Your info is safe. We'll send workshop details on WhatsApp.</p>
+</div>
+</div>
+
+<script>
+function handleLeadSubmit(e){
+  e.preventDefault();
+  var btn=document.getElementById('leadBtn');
+  btn.disabled=true;btn.textContent='Redirecting...';
+  var name=document.getElementById('leadName').value;
+  var email=document.getElementById('leadEmail').value;
+  var phone=document.getElementById('leadPhone').value;
+  // Fire Meta Pixel Lead event
+  if(typeof fbq==='function'){
+    fbq('track','Lead',{content_name:'AIWarroom-Workshop',currency:'INR',value:199});
+  }
+  // Store lead in localStorage as backup
+  try{var leads=JSON.parse(localStorage.getItem('aiwarroom_leads')||'[]');leads.push({name:name,email:email,phone:phone,ts:new Date().toISOString()});localStorage.setItem('aiwarroom_leads',JSON.stringify(leads));}catch(err){}
+  // Redirect to Razorpay after short delay (let pixel fire)
+  setTimeout(function(){window.open('https://rzp.io/rzp/pKctISH','_blank');btn.disabled=false;btn.textContent='Claim Your Seat for ₹199 →';document.getElementById('leadModal').classList.remove('active');},500);
+  return false;
+}
+function openLeadModal(e){if(e)e.preventDefault();document.getElementById('leadModal').classList.add('active');}
+</script>
 
 <script>
 function toggleCur(el){var d=el.parentElement.querySelector('.cur-detail');if(d.style.maxHeight&&d.style.maxHeight!=='0px'){d.style.maxHeight='0px';d.style.opacity='0'}else{d.style.maxHeight=d.scrollHeight+'px';d.style.opacity='1'}}
